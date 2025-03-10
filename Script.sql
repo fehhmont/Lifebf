@@ -1,3 +1,7 @@
+create database lifebf;
+
+use lifebf;
+
 CREATE TABLE cliente(
     id_cliente int auto_increment primary key,
     nome varchar(255) not null,
