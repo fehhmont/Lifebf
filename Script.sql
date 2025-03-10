@@ -5,24 +5,18 @@ use lifebf;
 CREATE TABLE cliente(
     id_cliente int auto_increment primary key,
     nome varchar(255) not null,
-    cpf char(11) not null unique,
     email varchar(120) not null,
-    senha varchar(100) not null, 
     data_nascimento DATE not null,
-    plano_saude varchar(20) not null
-
-);
-
-CREATE TABLE endereco(
-    id_endereco int auto_increment primary key,
+    cpf char(11) not null unique,
+    senha varchar(100) not null, 
+    plano_saude varchar(20) not null,
     cep char(8) not null,
-    bairro varchar(50) not null,
     rua varchar(50) not null,
     numero varchar(5) not null,
-    estado varchar(40) not null,
+    bairro varchar(50) not null,
     cidade varchar(30) not null,
-    id_cliente int,
-    foreign key(id_cliente) references cliente(id_cliente)
+    estado varchar(40) not null
+    
 );
 
 CREATE TABLE membro(
