@@ -6,7 +6,6 @@ CREATE TABLE cliente(
     id_cliente int auto_increment primary key,
     nome varchar(255) not null,
     email varchar(120) not null,
-    data_nascimento DATE not null,
     cpf char(11) not null unique,
     senha varchar(100) not null, 
     plano_saude varchar(20) not null,
