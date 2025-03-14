@@ -2,10 +2,9 @@ package br.com.lifebf.dao;
 
 
 import br.com.lifebf.model.Cliente;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import com.mysql.cj.protocol.Resultset;
+
+import java.sql.*;
 
 public class ClienteDao {
 
@@ -17,7 +16,7 @@ public class ClienteDao {
 
         try {
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf?user=root&password=root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf?user=root&password=");
 
             System.out.println("Success in database connection");
 
@@ -51,5 +50,22 @@ public class ClienteDao {
             }
         }
     }
+
+    public ResultSet loginCliente(Cliente cliente) throws SQLException {
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf?user=root&password=");
+            String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, cliente.getEmail());
+            preparedStatement.setString(2, cliente.getSenha());
+            ResultSet resultset = preparedStatement.executeQuery();
+            return resultset;
+
+        } catch (SQLException sqlException) {
+            throw new RuntimeException("Error closing connection: " + sqlException.getMessage());
+        }
+    }
 }
+
 
