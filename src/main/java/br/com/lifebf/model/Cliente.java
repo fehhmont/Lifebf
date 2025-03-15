@@ -31,7 +31,10 @@ public class Cliente {
         this.cidade = cidade;
         this.estado = estado;
     }
-
+    public Cliente(String email, String senha){
+        this.email = email;
+        this.senha = senha;
+    }
     // Getters e Setters
     public String getNome() {
         return nome;

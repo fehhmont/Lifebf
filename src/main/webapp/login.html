@@ -114,7 +114,7 @@
 <script src="js/login.js"></script>
 <div class="container">
     <h2>Login</h2>
-    <form id="loginForm">
+    <form id="loginForm" action="/login" method="post">
         <div class="form-group">
             <label for="email">E-mail</label>
             <input type="email" id="email" placeholder="Digite seu e-mail" required>
@@ -123,7 +123,7 @@
             <label for="senha">Senha</label>
             <input type="password" id="senha" placeholder="Digite sua senha" required>
         </div>
-        <button type="button" onclick="login()">Entrar</button>
+        <button type="submit">Entrar</button>
     </form>
     <div class="register-link">
         <p>Não possui uma conta? <a href="cadastro.html">Cadastre-se</a></p>
