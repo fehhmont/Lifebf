@@ -15,8 +15,7 @@ public class Cliente {
     private String estado;
 
     // Construtor padrão
-    public Cliente() {}
-
+    public Cliente(){}
     // Construtor com parâmetros
     public Cliente(String nome, String email, String cpf, String senha, String planoSaude, String cep, String rua, String numero, String bairro, String cidade, String estado) {
         this.nome = nome;
@@ -31,7 +30,10 @@ public class Cliente {
         this.cidade = cidade;
         this.estado = estado;
     }
-
+    public Cliente(String email, String senha){
+        this.email = email;
+        this.senha = senha;
+    }
     // Getters e Setters
     public String getNome() {
         return nome;

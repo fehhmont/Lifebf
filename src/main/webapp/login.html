@@ -113,17 +113,18 @@
 <body>
 <div class="container">
     <h2>Login</h2>
-    <form id="loginForm">
+    <form id="loginForm" action="/login" method="post">
         <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
         </div>
         <div class="form-group">
             <label for="senha">Senha</label>
-            <input type="password" id="senha" placeholder="Digite sua senha" required>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
         </div>
         <button type="submit">Entrar</button>
     </form>
+
     <div class="register-link">
         <p>Não possui uma conta? <a href="cadastro.html">Cadastre-se</a></p>
     </div>
