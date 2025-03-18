@@ -19,10 +19,11 @@ public class LoginServlet extends HttpServlet {
         String email = req.getParameter("email");
         String senha = req.getParameter("senha");
 
-        Cliente cliente = new Cliente(email, senha);
+        Cliente cliente = clienteDao.getClienteDetalhadoByEmailAndSenha(email, senha);
 
-        if (clienteDao.loginCliente(cliente)) {
-            resp.sendRedirect("sobre.html"); // Redireciona para a página do usuário autenticado
+        if (cliente != null) {
+            req.getSession().setAttribute("cliente", cliente); // Salva o cliente na sessão
+            resp.sendRedirect("painel/dashboard.jsp"); // Redireciona para o painel
         } else {
             resp.getWriter().write("E-mail ou senha incorretos!");
         }

@@ -67,5 +67,36 @@ public class ClienteDao {
             throw new RuntimeException("Erro ao tentar logar: " + e.getMessage());
         }
     }
+
+    public Cliente getClienteDetalhadoByEmailAndSenha(String email, String senha) {
+        String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf?user=root&password=root");
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, senha);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return new Cliente(
+                        resultSet.getString("nome"),
+                        resultSet.getString("email"),
+                        resultSet.getString("cpf"),
+                        resultSet.getString("senha"),
+                        resultSet.getString("plano_saude"),
+                        resultSet.getString("cep"),
+                        resultSet.getString("rua"),
+                        resultSet.getString("numero"),
+                        resultSet.getString("bairro"),
+                        resultSet.getString("cidade"),
+                        resultSet.getString("estado")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar cliente", e);
+        }
+        return null;
+    }
 }
+
 
