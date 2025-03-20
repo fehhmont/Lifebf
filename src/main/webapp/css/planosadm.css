@@ -1,0 +1,116 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7fafc;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+}
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+.sidebar a {
+    display: block;
+    color: #4a5568;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+.sidebar a.active {
+    background-color: #3182ce;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.main-content {
+    width: 80%;
+    padding: 40px;
+}
+.main-content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.main-content p {
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+.plans {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.plan-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+}
+.plan-card img {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.plan-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+.plan-card p {
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+.plan-card button {
+    background-color: #3182ce;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+.plan-card button.selected {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    background-color: #edf2f7;
+}
+.footer .section {
+    width: 20%;
+}
+.footer .section img {
+    height:250px;           
+    width: auto;             
+    display: block;        
+    margin-left: auto;       
+    margin-right: auto;      
+    object-fit: contain;    
+}
+
+
+.footer .section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #4a5568;
+    font-weight: bold;
+}
+.footer .section p {
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+.footer .social-icons {
+    display: flex;
+    gap: 10px;
+}
+.footer .social-icons a {
+    color: #3182ce;
+    font-size: 1.5rem;
+}
