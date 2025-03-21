@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-image: url('img/image_fundo.png');
+            background-image: url('image_fundo.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -22,6 +22,27 @@
             justify-content: center;
             align-items: center;
             color: #000000;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: black;
+            padding: 10px 15px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-color: rgba(0, 0, 0, 0.6);
         }
 
         .container {
@@ -107,10 +128,21 @@
                 padding: 20px;
                 width: 90%;
             }
+
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 12px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
+
+
+<button class="back-button" onclick="window.location.href='index.html'">← Voltar</button>
+
 <div class="container">
     <h2>Login</h2>
     <form id="loginForm" action="/login" method="post">
@@ -129,5 +161,6 @@
         <p>Não possui uma conta? <a href="cadastro.html">Cadastre-se</a></p>
     </div>
 </div>
+
 </body>
 </html>
