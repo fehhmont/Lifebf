@@ -1,4 +1,5 @@
 <%@ page import="br.com.lifebf.model.Cliente" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%
     Cliente cliente = (Cliente) session.getAttribute("cliente");
     if (cliente == null) {
