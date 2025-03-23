@@ -19,7 +19,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.33</version> <!-- Verifique a versão mais recente -->
+      <version>8.0.33</version> 
     </dependency>
 
     <dependency>
@@ -39,6 +39,12 @@
       <artifactId>annotations</artifactId>
       <version>RELEASE</version>
       <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
     </dependency>
   </dependencies>
   <build>
