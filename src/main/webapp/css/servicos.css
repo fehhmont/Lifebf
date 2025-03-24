@@ -15,7 +15,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    margin-top: 10px;
 }
 
 /* Header */
@@ -105,8 +105,12 @@ body {
 
 .hero-text {
     max-width: 600px;
-}
 
+}
+.intro-text{
+    line-height: 130%;
+
+}
 .hero-text h1 {
     font-size: 3rem;
     font-weight: bold;
@@ -117,6 +121,7 @@ body {
 .hero-text p {
     font-size: 1.25rem;
     margin-bottom: 2rem;
+    line-height: 130%;
 }
 
 .cta-btn {
@@ -229,7 +234,11 @@ body {
     text-align: center;
     color: #bfdbfe;
 }
+.plans{
+    padding: 20px;
+}
 .plans-grid {
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem; 
