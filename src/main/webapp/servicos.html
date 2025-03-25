@@ -2,124 +2,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeBF - Planos de Saúde</title>
-    <link rel="stylesheet" href="css/servicos.css">
+    <title>LifeBF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="servicos.css" rel="stylesheet">
+
 </head>
 <body>
-<header class="header">
-    <div class="container header-content">
+    <header>
         <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-icon">
-                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-            </svg>
-            <span>LifeBF</span>
+            <img src="logo 2.png" alt="LifeBF logo" width="100" height="40">
+            
         </div>
-        <nav class="nav-menu">
-            <a href="index.html">Início</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="servicos.html">Serviços</a>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Sobre</a>
+            <a href="#">Serviços</a>
         </nav>
-        <button class="login-btn" id="loginButton">Login</button>
-    </div>
-</header>
-
-<section class="plans">
-    <div class="container">
-        <h2>Escolha o seu Plano de Saúde</h2>
-        <p class="intro-text">A LifeBF é referência em planos de saúde acessíveis e de alta qualidade, garantindo o melhor custo-benefício para você e sua família. Nossa missão é proporcionar atendimento médico de excelência, sem pesar no seu bolso. Com ampla cobertura, suporte especializado e um time de profissionais qualificados, cuidamos da sua saúde com o carinho e a dedicação que você merece. Escolha o plano ideal para suas necessidades e viva com mais segurança e tranquilidade!</p>
-        <div class="plans-grid">
-            <!-- Plano Gratuito -->
-            <div class="plan-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/2300/2300423.png" alt="Plano Gratuito" class="plan-image">
-                <h3>Plano Gratuito</h3>
-                <p>Oferece 2x Criação de membros e 5x Cadastro de endereço por membro.</p>
-                <p><strong>Grátis</strong></p>
-                <button class="cta-btn">Escolher Plano</button>
+        <button>Login</button>
+    </header>
+    <main>
+        <h1>Escolha o Serviço ideal Para Você</h1>
+        <div class="service-info">
+            <div>
+                <h2>Serviços Flexíveis para todos as necessidades</h2>
+                <p>Oferecemos opções que se adaptam ao seu crescimento, desde o serviço gratuito até soluções completas para toda a família.</p>
             </div>
-
-            <!-- Plano Individual -->
-            <div class="plan-card">
-                <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/2425487-icone-do-plano-de-saude-em-branco-vetor.jpg" alt="Plano Individual" class="plan-image">
-                <h3>Plano Individual</h3>
-                <p>Oferece 4x Criação de membros e 10x Cadastro de endereço por membro.</p>
-                <p><strong>R$ 7,50 / Mês</strong></p>
-                <button class="cta-btn">Escolher Plano</button>
-            </div>
-
-            <!-- Plano Família -->
-            <div class="plan-card">
-                <img src= "https://media.istockphoto.com/id/1012323872/pt/foto/medical-insurance-concept-with-family-and-stethoscope-on-wooden-desk.jpg?s=612x612&w=0&k=20&c=6uK02ZNxsXE-jW4BCNYh3pe4zZz6AMmkOv9eO_2V8Bo=" alt="Plano Família" class="plan-image">
-                <h3>Plano Família</h3>
-                <p>Oferece Criação de membros ilimitada e Cadastro de endereço ilimitado por membro.</p>
-                <p><strong>R$ 15,90 / Mês</strong></p>
-                <button class="cta-btn">Escolher Plano</button>
-            </div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv3peSIV5P7FHAGpKkWRSv1iThQWwe2kkhQw&s" alt="Decorative image">
         </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h3>Sobre Nós</h3>
-                <p>Com a LifeBF, você garante segurança e tranquilidade para você e sua família.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <div class="contact-info">
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        (11) 2326-3361
-                    </p>
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="16" x="2" y="4" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                        </svg>
-                        contato@lifebf.com
-                    </p>
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        Av. Paulista, 1234 - São Paulo, SP
-                    </p>
+        <div class="card-container">
+            <div class="card">
+                <div>
+                    <h3>Free</h3>
+                    <p>R$ 0 <span>/mês</span></p>
+                    <ul>
+                        <li><i class="fas fa-check"></i>2 membros</li>
+                        <li><i class="fas fa-check"></i>5 endereços por membro</li>
+                    </ul>
                 </div>
+                <button>Selecionar</button>
             </div>
-            <div class="footer-section">
-                <h3>Redes Sociais</h3>
-                <div class="social-links">
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                        </svg>
-                    </a>
+            <div class="card">
+                <div>
+                    <h3>Individual</h3>
+                    <p>R$ 7,50 <span>/mês</span></p>
+                    <ul>
+                        <li><i class="fas fa-check"></i>4 membros</li>
+                        <li><i class="fas fa-check"></i>10 endereços por membro</li>
+                    </ul>
                 </div>
+                <button>Selecionar</button>
+            </div>
+            <div class="card card-blue">
+                <div>
+                    <h3>Plano Família</h3>
+                    <p>R$ 15,90 <span>/mês</span></p>
+                    <ul>
+                        <li><i class="fas fa-check"></i>Membros Ilimitados</li>
+                        <li><i class="fas fa-check"></i>Endereço Ilimitado por membro</li>
+                    </ul>
+                </div>
+                <button>Selecionar</button>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 LifeBF. Todos os direitos reservados.</p>
-        </div>
-    </div>
-</footer>
-
-<script src="js/script.js"></script>
+    </main>
+    <footer></footer>
 </body>
 </html>
-
