@@ -1,7 +1,9 @@
 :root {
     --primary-color: #007bff;
-    --sidebar-width: 200px;
+    --sidebar-width: 220px;
     --header-height: 60px;
+    --background-light: #f8f9fa;
+    --text-color: #333;
 }
 
 * {
@@ -12,7 +14,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: var(--background-light);
 }
 
 .container {
@@ -24,25 +26,32 @@ body {
     width: var(--sidebar-width);
     background-color: white;
     padding: 20px;
-    border-right: 1px solid #e0e0e0;
+    border-right: 2px solid #ddd;
 }
 
 .user-name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .nav-item {
-    padding: 10px;
+    display: block;
+    padding: 12px;
     margin: 5px 0;
-    cursor: pointer;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #e3f2fd;
 }
 
 .nav-item.active {
-    background-color: #e3f2fd;
-    color: var(--primary-color);
-    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .main-content {
@@ -57,123 +66,11 @@ body {
     margin-bottom: 20px;
 }
 
-.criar-membro {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.search-bar {
-    margin-bottom: 20px;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    margin-bottom: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f8f9fa;
-}
-
-.gerar-qr {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.editar {
-    color: var(--primary-color);
-    text-decoration: none;
-    margin-right: 10px;
-}
-
-.excluir {
-    color: red;
-    text-decoration: none;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.pagination button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--primary-color);
-    font-size: 18px;
-}
-
-.pagination button:hover {
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 4px;
-}
-
-footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    margin-top: auto;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 20px;
-}
-
-.logo img {
-    width: 100px;
-}
-
-.sobre-nos, .contato, .redes-sociais {
-    flex: 1;
-}
-
-h3 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.social-icons {
-    display: flex;
-    gap: 10px;
-}
-
-.social-icon {
-    text-decoration: none;
-    font-size: 20px;
-}
-
-/* Estilos para Configurações */
 .config-content {
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
 
 .config-content p {
@@ -193,9 +90,8 @@ h3 {
 }
 
 .config-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    display: flex;
+    gap: 10px;
 }
 
 .editar-info, .alterar-senha {
@@ -205,7 +101,7 @@ h3 {
     padding: 10px 16px;
     border-radius: 4px;
     cursor: pointer;
-    margin-right: 10px;
+    transition: background 0.3s;
 }
 
 .editar-info:hover, .alterar-senha:hover {
