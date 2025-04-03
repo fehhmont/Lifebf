@@ -1,34 +1,52 @@
+<%@ page import="br.com.lifebf.model.Cliente" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%
+    Cliente cliente = (Cliente) session.getAttribute("cliente");
+    if (cliente == null) {
+        response.sendRedirect("login.html");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planos</title>
-    <link rel="stylesheet" href="planos.css">
+    <link rel="stylesheet" href="css/planos.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         
         <div class="sidebar">
-            <div class="user-name">Felipe</div>
-            <nav>
-                <div class="nav-item">Painel</div>
-                <div class="nav-item">Membros</div>
-                <div class="nav-item active">Planos</div>
-                <div class="nav-item">Configurações</div>
-            </nav>
-        </div>
+                            <div class="user-name"><%= cliente.getNome() %></div>
+                            <a href="painel.html" class="nav-item">Painel</a>
+                            <a href="membros.jsp" class="nav-item">Membros</a>
+                            <a href="planos.jsp" class="nav-item active">Planos</a>
+                            <a href="config.jsp" class="nav-item">Configurações</a>
+                            <a href="logout.jsp" class="excluir">Sair</a>
+                        </div>
 
         
         <div class="main-content">
             <h1>Planos</h1>
             <div class="content">
                 <div class="text-image-container">
-                    <p>Plano Gratuito (Free): Ideal para quem está começando. Com esse plano, você pode criar até 2 membros e cadastrar até 5 endereços, tudo sem custo nenhum. Perfeito para quem busca uma solução simples e sem compromisso.</p>
-                    <p>Plano Individual: Se você precisa de mais recursos, o Plano Individual oferece até 4 membros e 10 endereços. Tudo isso por apenas R$ 7,50 por mês. Uma opção acessível para quem precisa de um pouco mais de flexibilidade.</p>
-                    <p>Plano Família: Para quem busca o máximo de benefícios, o Plano Família oferece criação ilimitada de membros e cadastro ilimitado de endereços, por apenas R$ 15,90 por mês. A escolha ideal para famílias ou quem precisa de uma solução completa e sem restrições.</p>
-                    <img src="https://goiasfortecorretora.com.br/wp-content/uploads/elementor/thumbs/xcomo-atrair-e-reter-talentos-seguro-saude.pagespeed.ic_.PX0q8RhEux-p9rnyqphtcd1lkfhmgljcqnjjddxyzc5yl5aba95jk.png" alt="">
+                    <p>Procurando uma maneira simples e eficiente de gerenciar informações essenciais? Temos a solução perfeita para você! Nossos planos foram pensados para atender diferentes necessidades, desde quem está começando até quem precisa de recursos ilimitados.
+<br>
+                        <br>
+                        🔹 Plano Gratuito (Free) – Comece sem custos! Cadastre até 2 membros e 5 endereços sem pagar nada.
+                        <br>
+                        <br>
+                        🔹 Plano Individual – Mais flexibilidade para quem precisa de um pouco mais. Por apenas R$ 7,50/mês, gerencie até 4 membros e 10 endereços.
+                        <br>
+                        <br>
+                        🔹 Plano Família – O máximo de liberdade! Com R$ 15,90/mês, você pode adicionar quantos membros e endereços quiser, sem limites.
+
+                        Escolha o plano que melhor atende às suas necessidades e aproveite uma solução prática e segura!</p>
+
                 </div>
             </div>
 
@@ -76,9 +94,6 @@
             </div>
         </div>
     </div>
-    <div class="navigation">
-        <button class="arrow left-arrow"><i class="fas fa-angle-left"></i></button>
-        <button class="arrow right-arrow"><i class="fas fa-angle-right"></i></button>
-    </div>
+
 </body>
 </html>

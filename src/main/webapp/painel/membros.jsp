@@ -17,16 +17,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <div class="user-name"><%= cliente.getNome() %></div>
-            <nav>
-                <div class="nav-item">Painel</div>
-                <div class="nav-item active">Membros</div>
-                <div class="nav-item">Planos</div>
-                <div class="nav-item">Configurações</div>
-                <a href="logout.jsp" class="excluir">Sair</a>
-            </nav>
-        </div>
+         <div class="sidebar">
+                    <div class="user-name"><%= cliente.getNome() %></div>
+                    <a href="painel.html" class="nav-item">Painel</a>
+                    <a href="membros.jsp" class="nav-item active">Membros</a>
+                    <a href="planos.jsp" class="nav-item">Planos</a>
+                    <a href="config.jsp" class="nav-item">Configurações</a>
+                    <a href="logout.jsp" class="excluir">Sair</a>
+                </div>
 
         <div class="main-content">
             <div class="header">
