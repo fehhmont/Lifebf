@@ -70,7 +70,7 @@ public class ClienteDao {
 
     public Cliente getClienteDetalhadoByEmailAndSenha(String email, String senha) {
         String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf?user=root&password=''");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lifebf?user=root&password=");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
             preparedStatement.setString(1, email);

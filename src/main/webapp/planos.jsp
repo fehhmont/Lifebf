@@ -1,4 +1,7 @@
+
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -22,57 +25,15 @@
 
         
         <div class="main-content">
+
             <h1>Planos</h1>
             <div class="content">
-                <div class="text-image-container">
-                    <p>Plano Gratuito (Free): Ideal para quem está começando. Com esse plano, você pode criar até 2 membros e cadastrar até 5 endereços, tudo sem custo nenhum. Perfeito para quem busca uma solução simples e sem compromisso.</p>
-                    <p>Plano Individual: Se você precisa de mais recursos, o Plano Individual oferece até 4 membros e 10 endereços. Tudo isso por apenas R$ 7,50 por mês. Uma opção acessível para quem precisa de um pouco mais de flexibilidade.</p>
-                    <p>Plano Família: Para quem busca o máximo de benefícios, o Plano Família oferece criação ilimitada de membros e cadastro ilimitado de endereços, por apenas R$ 15,90 por mês. A escolha ideal para famílias ou quem precisa de uma solução completa e sem restrições.</p>
-                    <img src="https://goiasfortecorretora.com.br/wp-content/uploads/elementor/thumbs/xcomo-atrair-e-reter-talentos-seguro-saude.pagespeed.ic_.PX0q8RhEux-p9rnyqphtcd1lkfhmgljcqnjjddxyzc5yl5aba95jk.png" alt="">
-                </div>
-            </div>
+         <c:forEach var="plano" items="${planos}">
+          <p>Plano: ${plano.nome_plano} | Preço: R$ ${plano.preco_plano} | Duração: ${plano.quantidade_membros} meses</p>
 
-            <h2>Confira nossos planos:</h2>
-            <div class="plans">
-                <div class="plan">
-                    <img src="https://viverbem.unimedbh.com.br/wp-content/uploads/2025/01/Plano-de-saude-por-adesao-300x150.webp" alt="Plano Free">
-                    <div class="p-4">
-                        <h3>Free</h3>
-                        <ul>
-                            <li>2x Criação de membros</li>
-                            <li>5x Cadastro de endereço em cada membro</li>
-                        </ul>
-                        <p>Plano gratuito</p>
-                        <button class="selected">Selecionado</button>
-                    </div>
-                </div>
+         </c:forEach>
 
-                <div class="plan">
-                    <img src="https://viverbem.unimedbh.com.br/wp-content/uploads/2025/01/Plano-de-saude-por-adesao-300x150.webp" alt="Plano Individual">
-                    <div class="p-4">
-                        <h3>Individual</h3>
-                        <ul>
-                            <li>4x Criação de membros</li>
-                            <li>10x Cadastro de endereço em cada membro</li>
-                        </ul>
-                        <p>Por: R$ 7,50 / Mês</p>
-                        <button class="contract">Contratar</button>
-                    </div>
-                </div>
-
-                <div class="plan">
-                    <img src="https://viverbem.unimedbh.com.br/wp-content/uploads/2025/01/Plano-de-saude-por-adesao-300x150.webp" alt="Plano Família">
-                    <div class="p-4">
-                        <h3>Família</h3>
-                        <ul>
-                            <li>Ilimitado Criação de membros</li>
-                            <li>Ilimitado Cadastro de endereço em cada membro</li>
-                        </ul>
-                        <p>Por: R$ 15,90 / Mês</p>
-                        <button class="contract">Contratar</button>
-                                              
-                    </div>
-                </div>
+            <p>teseste</p>
             </div>
         </div>
     </div>
