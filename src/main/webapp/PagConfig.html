@@ -1,4 +1,3 @@
-<!-- config.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
             <div class="user-name">Felipe</div>
-            <div class="nav-item">Painel</div>
-            <div class="nav-item">Membros</div>
-            <div class="nav-item">Planos</div>
-            <div class="nav-item active">Configurações</div>
+            <a href="painel.html" class="nav-item">Painel</a>
+            <a href="membros.html" class="nav-item">Membros</a>
+            <a href="painel/planos.jsp" class="nav-item">Planos</a>
+            <a href="Pag.Config.html" class="nav-item active">Configurações</a>
         </div>
         <div class="main-content">
             <div class="header">
@@ -28,13 +28,15 @@
                 </ul>
                 <h3>Informações pessoais:</h3>
                 <ul>
-                    <li><strong>CPF:</strong> xxx.xxx.xxx-xx</li>
-                    <li><strong>Número:</strong> (xx) xxxxx-xxxx</li>
+                    <li><strong>CPF:</strong> ***.***.***-**</li>
+                    <li><strong>Número:</strong> (***) *****-****</li>
                     <li><strong>Endereço:</strong> Rua Engeápolis de Souza</li>
                     <li><strong>Bairro:</strong> Pinheiros</li>
                 </ul>
-                <button class="editar-info">Editar informações</button>
-                <button class="alterar-senha">Alterar senha</button>
+                <div class="config-buttons">
+                    <button class="editar-info">Editar informações</button>
+                    <button class="alterar-senha">Alterar senha</button>
+                </div>
             </div>
         </div>
     </div>
