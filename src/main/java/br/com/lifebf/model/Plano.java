@@ -2,14 +2,14 @@ package br.com.lifebf.model;
 
 public class Plano {
     private int id;
-    private String nome_plano;
-    private double preco_plano;
-    private int quantidade_membros;
+    private String nomePlano;
+    private double precoPlano;
+    private int quantidadeMembros;
 
-    public Plano(String nome_plano, double preco_plano, int quantidade_membros) {
-        this.nome_plano = nome_plano;
-        this.preco_plano = preco_plano;
-        this.quantidade_membros = quantidade_membros;
+    public Plano(String nomePlano, double precoPlano, int quantidadeMembros) {
+        this.nomePlano = nomePlano;
+        this.precoPlano = precoPlano;
+        this.quantidadeMembros = quantidadeMembros;
     }
     public Plano(){
 
@@ -23,27 +23,27 @@ public class Plano {
         this.id = id;
     }
 
-    public String getNome_plano() {
-        return nome_plano;
+    public String getNomePlano() {
+        return nomePlano;
     }
 
-    public void setNome_plano(String nome_plano) {
-        this.nome_plano = nome_plano;
+    public void setNomePlano(String nomePlano) {
+        this.nomePlano = nomePlano;
     }
 
-    public double getPreco_plano() {
-        return preco_plano;
+    public double getPrecoPlano() {
+        return precoPlano;
     }
 
-    public void setPreco_plano(double preco_plano) {
-        this.preco_plano = preco_plano;
+    public void setPrecoPlano(double precoPlano) {
+        this.precoPlano = precoPlano;
     }
 
-    public int getQuantidade_membros() {
-        return quantidade_membros;
+    public int getQuantidadeMembros() {
+        return quantidadeMembros;
     }
 
-    public void setQuantidade_membros(int quantidade_membros) {
-        this.quantidade_membros = quantidade_membros;
+    public void setQuantidadeMembros(int quantidadeMembros) {
+        this.quantidadeMembros = quantidadeMembros;
     }
 }

@@ -2,7 +2,6 @@ package br.com.lifebf.servlet;
 
 import br.com.lifebf.dao.PlanoDao;
 import br.com.lifebf.model.Plano;
-import com.google.gson.Gson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/planos")
@@ -28,9 +23,9 @@ public class PlanoServlet extends HttpServlet {
 
         System.out.println(lsPlanos.size());
         for (Plano plano : lsPlanos) {
-            System.out.println("DEBUG => " + plano.getNome_plano());
+            System.out.println("DEBUG => " + plano.getNomePlano());
         }
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/planos.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/painel/planos.jsp");
         dispatcher.forward(req, resp);
     }
 }
