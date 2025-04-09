@@ -3,7 +3,6 @@ CREATE DATABASE  lifebf;
 USE lifebf;
 
 
-
 CREATE TABLE cliente (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -48,6 +47,14 @@ CREATE TABLE plano (
     quantidade_membros INT NOT NULL
 );
 
+INSERT INTO plano (nome_plano, preco_plano, quantidade_membros)
+VALUES ('Plano Básico', 49.90, 1);
+
+INSERT INTO plano (nome_plano, preco_plano, quantidade_membros)
+VALUES ('Plano Família', 129.90, 4);
+
+INSERT INTO plano (nome_plano, preco_plano, quantidade_membros)
+VALUES ('Plano Empresarial', 299.90, 10);
 
 CREATE TABLE membro_plano (
     id_membroplano INT AUTO_INCREMENT PRIMARY KEY,
