@@ -34,32 +34,33 @@ body {
 }
 
 .nav-item {
-     display: block;
-        padding: 12px;
-        margin: 5px 0;
-        color: var(--text-color);
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background 0.3s;
+    padding: 12px;
+    margin: 5px 0;
+    cursor: pointer;
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-item.active {
+     background-color: var(--primary-color);
+        color: white;
 }
 
 .nav-item:hover {
     background-color: #e3f2fd;
 }
 
-.nav-item.active {
-    background-color: var(--primary-color);
-    color: white;
+.main-content {
+    flex: 1;
+    padding: 20px;
 }
 
 .excluir {
     color: red;
     text-decoration: none;
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
 }
 
 h1 {

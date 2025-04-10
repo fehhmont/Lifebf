@@ -3,7 +3,7 @@
 <%
     Cliente cliente = (Cliente) session.getAttribute("cliente");
     if (cliente == null) {
-        response.sendRedirect("login.html");
+        response.sendRedirect("../login.html");
         return;
     }
 %>
@@ -19,9 +19,9 @@
     <div class="container">
          <div class="sidebar">
                     <div class="user-name"><%= cliente.getNome() %></div>
-                    <a href="painel.html" class="nav-item">Painel</a>
+                    <a href="#" class="nav-item">Painel</a>
                     <a href="membros.jsp" class="nav-item active">Membros</a>
-                    <a href="planos.jsp" class="nav-item">Planos</a>
+                    <a href="/planos" class="nav-item">Planos</a>
                     <a href="config.jsp" class="nav-item">Configurações</a>
                     <a href="logout.jsp" class="excluir">Sair</a>
                 </div>
@@ -76,10 +76,7 @@
                 </tbody>
             </table>
 
-            <div class="pagination">
-                <button class="prev">◀◀</button>
-                <button class="next">▶▶</button>
-            </div>
+
         </div>
     </div>
 
