@@ -24,7 +24,7 @@
         <div class="sidebar">
                             <div class="user-name"><%= cliente.getNome() %></div>
                             <a href="#" class="nav-item">Painel</a>
-                            <a href="painel/membros.jsp" class="nav-item ">Membros</a>
+                            <a href="/membros" class="nav-item ">Membros</a>
                             <a href="/planos" class="nav-item active">Planos</a>
                             <a href="painel/config.jsp" class="nav-item">Configurações</a>
                             <a href="painel/logout.jsp" class="excluir">Sair</a>

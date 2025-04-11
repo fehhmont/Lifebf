@@ -21,6 +21,7 @@ public class ClienteDao {
 
             PreparedStatement preparedStatement = conn.prepareStatement(SQL);
 
+
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setString(3, cliente.getCpf());
@@ -79,6 +80,7 @@ public class ClienteDao {
 
             if (resultSet.next()) {
                 return new Cliente(
+                        resultSet.getInt("id_cliente"),
                         resultSet.getString("nome"),
                         resultSet.getString("email"),
                         resultSet.getString("cpf"),
