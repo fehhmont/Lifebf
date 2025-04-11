@@ -19,7 +19,7 @@
 <body>
     <div class="container">
         <div class="sidebar">
-                            <div class="user-name">Felipe</div>
+                            <div class="user-name"><%= cliente.getNome() %></div>
                             <a href="#s" class="nav-item">Painel</a>
                             <a href="/membros" class="nav-item">Membros</a>
                             <a href="/planos" class="nav-item">Planos</a>
