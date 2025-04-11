@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Membros</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/membros.css">
 </head>
 <body>
     <div class="container">
@@ -29,7 +29,7 @@
         <div class="main-content">
             <div class="header">
                 <h1>Membros</h1>
-                <button class="criar-membro">Criar membro</button>
+                <button class="criar-membro" onclick="openModal()">Criar membro</button>
             </div>
 
             <div class="search-bar">
@@ -75,6 +75,19 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="modal-overlay" id="modalOverlay">
+              <div class="modal">
+                <h3>Preencha os dados</h3>
+                <form action="FormularioServlet" method="post" class="form-container">
+                  <input type="text" name="nome" placeholder="Nome" required>
+                  <input type="text" name="descricao" placeholder="Descrição" required>
+                  <div style="text-align: right;">
+                    <button type="submit" class="submit-btn">Adicionar membro</button>
+                    <button type="button" class="close-btn" onclick="closeModal()">Cancelar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
 
             <div class="pagination">
                 <button class="prev">◀◀</button>
@@ -83,6 +96,6 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
