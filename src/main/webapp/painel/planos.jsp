@@ -1,5 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="br.com.lifebf.model.Cliente" %>
+<%
+    Cliente cliente = (Cliente) session.getAttribute("cliente");
+    if (cliente == null) {
+        response.sendRedirect("../login.html");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,15 +20,15 @@
 <body>
     <div class="container">
         
+
         <div class="sidebar">
-            <div class="user-name">Felipe</div>
-            <nav>
-                <div class="nav-item">Painel</div>
-                <div class="nav-item">Membros</div>
-                <div class="nav-item active">Planos</div>
-                <div class="nav-item">Configurações</div>
-            </nav>
-        </div>
+                            <div class="user-name"><%= cliente.getNome() %></div>
+                            <a href="#" class="nav-item">Painel</a>
+                            <a href="/membros" class="nav-item ">Membros</a>
+                            <a href="/planos" class="nav-item active">Planos</a>
+                            <a href="painel/config.jsp" class="nav-item">Configurações</a>
+                            <a href="painel/logout.jsp" class="excluir">Sair</a>
+                        </div>
 
         
         <div class="main-content">
@@ -28,17 +36,20 @@
             <h1>Planos</h1>
             <div class="content">
 
-         <c:forEach var="plano" items="${planos}">
-
-          <p>Plano: ${plano.nomePlano} | Preço: R$ ${plano.precoPlano} | Duração: ${plano.quantidadeMembros} meses</p>
-         </c:forEach>
-
+    <div class="plans">
+        <c:forEach var="plano" items="${planos}">
+            <div class="plan">
+                <div class="p-4">
+                    <h3>${plano.nomePlano}</h3>
+                    <ul>
+                        <li>Criação de Membros: ${plano.quantidadeMembros}</li>
+                    </ul>
+                    <p>Preço: R$ ${plano.precoPlano}</p>
+                    <button class="selected">Selecionado</button>
+                </div>
             </div>
-        </div>
+        </c:forEach>
     </div>
-    <div class="navigation">
-        <button class="arrow left-arrow"><i class="fas fa-angle-left"></i></button>
-        <button class="arrow right-arrow"><i class="fas fa-angle-right"></i></button>
-    </div>
+
 </body>
 </html>

@@ -30,6 +30,7 @@ public class ClienteServlet extends HttpServlet {
         String lifeestado = request.getParameter("estado");
 
         Cliente cliente = new Cliente();
+
         cliente.setNome(lifeName);
         cliente.setEmail(lifeemail);
         cliente.setCpf(lifecpf);

@@ -15,11 +15,12 @@ public class ClienteDao {
 
         try {
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "root");
 
             System.out.println("Success in database connection");
 
             PreparedStatement preparedStatement = conn.prepareStatement(SQL);
+
 
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getEmail());
@@ -53,7 +54,7 @@ public class ClienteDao {
 
     public boolean loginCliente(Cliente cliente) {
         String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "root");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
             preparedStatement.setString(1, cliente.getEmail());
@@ -70,7 +71,7 @@ public class ClienteDao {
 
     public Cliente getClienteDetalhadoByEmailAndSenha(String email, String senha) {
         String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "root");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
             preparedStatement.setString(1, email);
@@ -79,6 +80,7 @@ public class ClienteDao {
 
             if (resultSet.next()) {
                 return new Cliente(
+                        resultSet.getInt("id_cliente"),
                         resultSet.getString("nome"),
                         resultSet.getString("email"),
                         resultSet.getString("cpf"),

@@ -3,7 +3,7 @@
 <%
     Cliente cliente = (Cliente) session.getAttribute("cliente");
     if (cliente == null) {
-        response.sendRedirect("login.html");
+        response.sendRedirect("../login.html");
         return;
     }
 %>
@@ -19,10 +19,10 @@
 <body>
     <div class="container">
         <div class="sidebar">
-                            <div class="user-name">Felipe</div>
-                            <a href="painel.html" class="nav-item">Painel</a>
-                            <a href="membros.jsp" class="nav-item">Membros</a>
-                            <a href="planos.jsp" class="nav-item">Planos</a>
+                            <div class="user-name"><%= cliente.getNome() %></div>
+                            <a href="#s" class="nav-item">Painel</a>
+                            <a href="/membros" class="nav-item">Membros</a>
+                            <a href="/planos" class="nav-item">Planos</a>
                             <a href="config.jsp" class="nav-item active">Configurações</a>
                             <a href="logout.jsp" class="excluir">Sair</a>
                         </div>

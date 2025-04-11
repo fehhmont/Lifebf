@@ -3,7 +3,7 @@
 <%
     Cliente cliente = (Cliente) session.getAttribute("cliente");
     if (cliente == null) {
-        response.sendRedirect("login.html");
+        response.sendRedirect("../login.html");
         return;
     }
 %>

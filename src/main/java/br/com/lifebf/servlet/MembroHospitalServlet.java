@@ -20,7 +20,13 @@ import java.util.List;
 @WebServlet("/membro/hospital")
 public class MembroHospitalServlet extends HttpServlet {
 
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 

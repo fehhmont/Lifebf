@@ -72,6 +72,10 @@ CREATE TABLE membro_hospital (
     FOREIGN KEY (id_membro) REFERENCES membro(id_membro),
     FOREIGN KEY (id_hospital) REFERENCES hospital(id_hospital)
 );
+
+INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
+("admin", "admin@admin.com", "12345678", "admin", "Unimed", "01001-000", "Avenida Paulista", "1000", "Bela Vista", "São Paulo", "SP");
+
 INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
 ("Carlos Silva", "carlos.silva@email.com", "12345678901", "senha123", "Unimed", "01001-000", "Avenida Paulista", "1000", "Bela Vista", "São Paulo", "SP");
 
@@ -91,10 +95,13 @@ INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bai
 
 INSERT INTO membro (nome, descricao, id_cliente) VALUES
 ("Felipe", "Descrição 1", 1),
+("Felipe2", "Descrição 2", 1),
 ("Felipe2", "Descrição 2", 2),
 ("Felipe3", "Descrição 3", 3),
 ("Felipe4", "Descrição 4", 4),
 ("Felipe5", "Descrição 5", 5);
+
+
 
 
 INSERT INTO hospital (nome, cep, rua, numero, bairro, estado, latitude, longitude) VALUES
@@ -123,6 +130,7 @@ INSERT INTO membro_hospital (id_membro, id_hospital) VALUES
 (5, 5),
 (1, 6),
 (2, 7),
+(2, 7),
 (3, 8),
 (4, 9),
 (5, 10),
@@ -141,4 +149,27 @@ SELECT h.id_hospital, h.nome, h.cep, h.rua, h.numero, h.bairro, h.estado, m.id_m
                     JOIN membro_hospital mh ON h.id_hospital = mh.id_hospital
                     JOIN membro m ON mh.id_membro = m.id_membro
 				WHERE m.id_membro = 2;
+
+ use lifebf;
+select m.id_membro, m.nome, m.descricao, m.id_cliente
+	from membro m
+    join cliente c on m.id_cliente = c.id_cliente
+    where c.id_cliente =1;
+   USE lifebf;
+DELETE FROM membro WHERE id_membro = 1 AND id_cliente = 1;
+
+    SELECT `cliente`.`id_cliente`,
+    `cliente`.`nome`,
+    `cliente`.`email`,
+    `cliente`.`cpf`,
+    `cliente`.`senha`,
+    `cliente`.`plano_saude`,
+    `cliente`.`cep`,
+    `cliente`.`rua`,
+    `cliente`.`numero`,
+    `cliente`.`bairro`,
+    `cliente`.`cidade`,
+    `cliente`.`estado`
+FROM `lifebf`.`cliente`;
+
 
