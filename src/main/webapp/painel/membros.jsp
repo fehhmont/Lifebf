@@ -73,8 +73,8 @@
             <div class="modal-overlay" id="modalOverlay">
               <div class="modal">
                 <h3>Preencha os dados</h3>
-                <form action="FormularioServlet" method="post" class="form-container">
-                  <input type="text" name="nome" placeholder="Nome" required>
+                <form action="membros" method="post" class="form-container">
+                  <input type="text" name="nome_membro" placeholder="Nome" required>
                   <input type="text" name="descricao" placeholder="Descrição" required>
                   <div style="text-align: right;">
                     <button type="submit" class="submit-btn">Adicionar membro</button>

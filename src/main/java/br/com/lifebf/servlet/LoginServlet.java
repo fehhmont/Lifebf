@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
         ClienteDao clienteDao = new ClienteDao();
         String email = req.getParameter("email");
         String senha = req.getParameter("senha");
+        System.out.println(senha);
 
         Cliente cliente = clienteDao.getClienteDetalhadoByEmailAndSenha(email, senha);
 

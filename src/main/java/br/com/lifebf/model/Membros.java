@@ -12,7 +12,7 @@ public class Membros {
         this.descricao = descricao;
         this.id_cliente = id_cliente;
     }
-
+    public Membros(){}
     public int getId_membro() {
         return id_membro;
     }

@@ -9,7 +9,7 @@ import java.util.List;
 public class MembrosDao {
     protected String database="lifebf";
     protected String user="root";
-    protected String password="Admin@local";
+    protected String password="";
 
 
     public Connection getConnection() throws SQLException{
@@ -24,6 +24,25 @@ public class MembrosDao {
         }
         return conn;
 
+    }
+    public boolean adicionarMembro(Membros membro) {
+        String sql = "INSERT INTO membro (nome, descricao, id_cliente) VALUES (?, ?, ?)";
+        String url = "jdbc:mysql://localhost:3306/" + database + "?user=" + user + "&password=" + password;
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement psmt = conn.prepareStatement(sql)) {
+
+            psmt.setString(1, membro.getNome());
+            psmt.setString(2, membro.getDescricao());
+            psmt.setInt(3, membro.getId_cliente());
+
+            int linhasAfetadas = psmt.executeUpdate();
+            return linhasAfetadas > 0;
+
+        } catch (SQLException sqlException) {
+            System.out.println(sqlException.getMessage());
+            return false;
+        }
     }
 
     public List<Membros> getMembro(){

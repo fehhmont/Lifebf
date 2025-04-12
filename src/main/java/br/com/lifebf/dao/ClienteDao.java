@@ -3,7 +3,6 @@ package br.com.lifebf.dao;
 
 import br.com.lifebf.model.Cliente;
 import java.sql.*;
-import com.mysql.cj.protocol.Resultset;
 
 public class ClienteDao {
 
@@ -15,7 +14,7 @@ public class ClienteDao {
 
         try {
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "Admin@local");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
 
             System.out.println("Success in database connection");
 
@@ -54,7 +53,7 @@ public class ClienteDao {
 
     public boolean loginCliente(Cliente cliente) {
         String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "Admin@local");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
             preparedStatement.setString(1, cliente.getEmail());
@@ -73,13 +72,12 @@ public class ClienteDao {
         String sql = "select * from cliente c " +
                 "inner join plano p on c.id_plano = p.id_plano" +
                 " WHERE email = ? AND senha = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "Admin@local");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, senha);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             if (resultSet.next()) {
                 return new Cliente(
                         resultSet.getInt("id_cliente"),
@@ -102,6 +100,7 @@ public class ClienteDao {
         }
         return null;
     }
+
 }
 
 
