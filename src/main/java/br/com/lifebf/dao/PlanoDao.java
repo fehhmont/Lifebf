@@ -32,7 +32,7 @@ public class PlanoDao {
             rs = preparedStatement.executeQuery();
             while(rs.next()){
                 System.out.println(rs.getString("nome_plano"));
-                Plano plano = new Plano(rs.getString("nome_plano"),rs.getDouble("preco_plano"),rs.getInt("quantidade_membros") );
+                Plano plano = new Plano(rs.getInt("id_plano"),rs.getString("nome_plano"),rs.getDouble("preco_plano"),rs.getInt("quantidade_membros") );
                 lsPlanos.add(plano);
             }
         }

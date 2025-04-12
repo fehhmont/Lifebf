@@ -1,12 +1,13 @@
 package br.com.lifebf.model;
 
 public class Plano {
-    private int id;
+    private int id_plano;
     private String nomePlano;
     private double precoPlano;
     private int quantidadeMembros;
 
-    public Plano(String nomePlano, double precoPlano, int quantidadeMembros) {
+    public Plano(int id_plano,String nomePlano, double precoPlano, int quantidadeMembros) {
+        this.id_plano = id_plano;
         this.nomePlano = nomePlano;
         this.precoPlano = precoPlano;
         this.quantidadeMembros = quantidadeMembros;
@@ -15,12 +16,12 @@ public class Plano {
 
     };
 
-    public int getId() {
-        return id;
+    public int getid_plano() {
+        return id_plano;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setid_plano(int id_plano) {
+        this.id_plano = this.id_plano;
     }
 
     public String getNomePlano() {

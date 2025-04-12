@@ -17,6 +17,31 @@
     <link rel="stylesheet" href="/painel/css/planos.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
+<style>
+        .btn-cinza {
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            cursor: not-allowed;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn-azul {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn-azul:hover {
+            background-color: #0056b3;
+        }
+    </style>
 <body>
     <div class="container">
         
@@ -41,11 +66,24 @@
             <div class="plan">
                 <div class="p-4">
                     <h3>${plano.nomePlano}</h3>
+
+
+
                     <ul>
                         <li>Criação de Membros: ${plano.quantidadeMembros}</li>
                     </ul>
                     <p>Preço: R$ ${plano.precoPlano}</p>
-                    <button class="selected">Selecionado</button>
+                    <c:choose>
+                        <c:when test="${plano.id_plano == cliente.getId_plano()}">
+                            <button class="btn-cinza" disabled>Selecionado</button>
+                        </c:when>
+                        <c:otherwise>
+                            <form action="/alterarPlano" method="post">
+                                <input type="hidden" name="idPlano" value="${plano.id_plano}" />
+                                <button type="submit" class="btn-azul">Selecionar</button>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </c:forEach>

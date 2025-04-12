@@ -24,6 +24,7 @@ public class PlanoServlet extends HttpServlet {
         System.out.println(lsPlanos.size());
         for (Plano plano : lsPlanos) {
             System.out.println("DEBUG => " + plano.getNomePlano());
+
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("/painel/planos.jsp");
         dispatcher.forward(req, resp);

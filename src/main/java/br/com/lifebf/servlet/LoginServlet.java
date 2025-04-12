@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 
         if (cliente != null) {
             req.getSession().setAttribute("cliente", cliente); // Salva o cliente na sessão
-            resp.sendRedirect("painel/dashboard.jsp"); // Redireciona para o painel
+            resp.sendRedirect("/membros"); // Redireciona para o painel
         } else {
             resp.getWriter().write("E-mail ou senha incorretos!");
         }
