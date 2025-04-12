@@ -3,6 +3,13 @@ CREATE DATABASE  lifebf;
 USE lifebf;
 
 
+CREATE TABLE plano (
+    id_plano INT AUTO_INCREMENT PRIMARY KEY,
+    nome_plano VARCHAR(200) NOT NULL,
+    preco_plano DECIMAL(5,2) NOT NULL,
+    quantidade_membros INT NOT NULL
+);
+
 CREATE TABLE cliente (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -15,7 +22,9 @@ CREATE TABLE cliente (
     numero VARCHAR(5) NOT NULL,
     bairro VARCHAR(50) NOT NULL,
     cidade VARCHAR(30) NOT NULL,
-    estado VARCHAR(40) NOT NULL
+    estado VARCHAR(40) NOT NULL,
+    id_plano INT,
+    foreign key(id_plano) references  plano(id_plano)
 );
 
 CREATE TABLE membro (
@@ -40,15 +49,10 @@ CREATE TABLE hospital (
 );
 
 
-CREATE TABLE plano (
-    id_plano INT AUTO_INCREMENT PRIMARY KEY,
-    nome_plano VARCHAR(200) NOT NULL,
-    preco_plano DECIMAL(5,2) NOT NULL,
-    quantidade_membros INT NOT NULL
-);
+
 
 INSERT INTO plano (nome_plano, preco_plano, quantidade_membros)
-VALUES ('Plano Básico', 49.90, 1);
+VALUES ('Plano Básico', 0, 1);
 
 INSERT INTO plano (nome_plano, preco_plano, quantidade_membros)
 VALUES ('Plano Família', 129.90, 4);
@@ -56,13 +60,6 @@ VALUES ('Plano Família', 129.90, 4);
 INSERT INTO plano (nome_plano, preco_plano, quantidade_membros)
 VALUES ('Plano Empresarial', 299.90, 10);
 
-CREATE TABLE membro_plano (
-    id_membroplano INT AUTO_INCREMENT PRIMARY KEY,
-    id_plano INT,
-    id_membro INT,
-    FOREIGN KEY (id_plano) REFERENCES plano(id_plano),
-    FOREIGN KEY (id_membro) REFERENCES membro(id_membro)
-);
 
 
 CREATE TABLE membro_hospital (
@@ -141,7 +138,8 @@ INSERT INTO membro_hospital (id_membro, id_hospital) VALUES
 (5, 15);
 
 
-select * from hospital;
+select * from cliente c
+inner join plano p on c.id_plano = p.id_plano;
 
 
 SELECT h.id_hospital, h.nome, h.cep, h.rua, h.numero, h.bairro, h.estado, m.id_membro, h.latitude, h.longitude
@@ -156,7 +154,7 @@ select m.id_membro, m.nome, m.descricao, m.id_cliente
     join cliente c on m.id_cliente = c.id_cliente
     where c.id_cliente =1;
    USE lifebf;
-DELETE FROM membro WHERE id_membro = 1 AND id_cliente = 1;
+
 
     SELECT `cliente`.`id_cliente`,
     `cliente`.`nome`,
