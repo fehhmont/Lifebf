@@ -70,7 +70,9 @@ public class ClienteDao {
     }
 
     public Cliente getClienteDetalhadoByEmailAndSenha(String email, String senha) {
-        String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
+        String sql = "select * from cliente c " +
+                "inner join plano p on c.id_plano = p.id_plano" +
+                " WHERE email = ? AND senha = ?";
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "Admin@local");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
@@ -91,7 +93,8 @@ public class ClienteDao {
                         resultSet.getString("numero"),
                         resultSet.getString("bairro"),
                         resultSet.getString("cidade"),
-                        resultSet.getString("estado")
+                        resultSet.getString("estado"),
+                        resultSet.getInt("id_plano")
                 );
             }
         } catch (SQLException e) {
