@@ -9,7 +9,7 @@ public class ClienteDao {
 
     public void createCliente(Cliente cliente) {
 
-        String SQL = "INSERT INTO cliente (nome,email,cpf,senha,plano_saude,cep,rua,numero,bairro,cidade,estado) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String SQL = "INSERT INTO cliente (nome,email,cpf,senha,plano_saude,cep,rua,numero,bairro,cidade,estado,id_plano) VALUES (?,?,?,?,?,?,?,?,?,?,?,1)";
 
         Connection conn = null;
 
