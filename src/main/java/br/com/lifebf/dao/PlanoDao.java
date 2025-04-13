@@ -12,7 +12,7 @@ import java.util.List;
 public class PlanoDao {
     protected String database="lifebf";
     protected String user="root";
-    protected String password="";
+    protected String password="Admin@local";
 
     public Connection getConnection() throws SQLException {
         Connection conn = null;

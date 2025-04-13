@@ -14,7 +14,7 @@ public class ClienteDao {
 
         try {
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "Admin@local");
 
             System.out.println("Success in database connection");
 
@@ -53,7 +53,7 @@ public class ClienteDao {
 
     public boolean loginCliente(Cliente cliente) {
         String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "Admin@local");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
             preparedStatement.setString(1, cliente.getEmail());
@@ -72,7 +72,7 @@ public class ClienteDao {
         String sql = "select * from cliente c " +
                 "inner join plano p on c.id_plano = p.id_plano" +
                 " WHERE email = ? AND senha = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifebf", "root", "Admin@local");
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
             preparedStatement.setString(1, email);

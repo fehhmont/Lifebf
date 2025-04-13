@@ -9,7 +9,7 @@ import java.util.List;
 public class MembrosDao {
     protected String database="lifebf";
     protected String user="root";
-    protected String password="";
+    protected String password="Admin@local";
 
 
     public Connection getConnection() throws SQLException{
@@ -55,7 +55,7 @@ public class MembrosDao {
             String sql = "select m.id_membro, m.nome, m.descricao, m.id_cliente" +
                     "from membro m" +
                     "    join cliente c on m.id_cliente = c.id_cliente " +
-                    "    where c.id_cliente =1;";
+                    "    where c.id_cliente =?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             rs = preparedStatement.executeQuery();
 

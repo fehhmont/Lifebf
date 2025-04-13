@@ -61,6 +61,7 @@ public class MembrosServlet extends HttpServlet {
             resp.setContentType("text/html;charset=UTF-8");
             if(result) {
                 resp.getWriter().println("<html><body><script>window.top.closeModal();</script><p>Membro adicionado com sucesso!</p></body></html>");
+                resp.sendRedirect("/membros");
             } else {
                 resp.getWriter().println("<html><body><p>Falha ao adicionar membro.</p></body></html>");
             }
