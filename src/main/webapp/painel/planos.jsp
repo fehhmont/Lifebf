@@ -66,9 +66,6 @@
             <div class="plan">
                 <div class="p-4">
                     <h3>${plano.nomePlano}</h3>
-
-
-
                     <ul>
                         <li>Criação de Membros: ${plano.quantidadeMembros}</li>
                     </ul>

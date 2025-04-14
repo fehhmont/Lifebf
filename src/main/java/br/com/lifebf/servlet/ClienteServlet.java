@@ -49,7 +49,7 @@ public class ClienteServlet extends HttpServlet {
 
 
 
-        request.getRequestDispatcher("cadastro.html").forward(request, response);
+        request.getRequestDispatcher("/membros").forward(request, response);
 
     }
 

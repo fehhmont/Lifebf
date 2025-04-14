@@ -41,13 +41,13 @@
                 <h2><%= cliente.getNome() %></h2>
 
                 <div class="plan-info">
-                    <p><strong>Plano contratado:</strong> Gratuito</p>
                     <p><strong>Plano de saude:</strong> <%= cliente.getPlanoSaude() %></p>
                 </div>
 
                 <div class="personal-info">
                     <h3>informações pessoais:</h3>
                     <ul>
+                        <li><strong>Email:</strong> <%= cliente.getEmail() %></li>
                         <li><strong>CPF:</strong> <%= cliente.getCpf() %></li>
                         <li><strong>Numero:</strong><%= cliente.getNumero() %></li>
                         <li><strong>Endereco:</strong><%= cliente.getRua() %></li>
