@@ -7,29 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MembrosDao {
-    protected String database="lifebf";
-    protected String user="root";
-    protected String password="Admin@local";
 
-
-    public Connection getConnection() throws SQLException{
-        Connection conn = null;
-
-        try{
-            String url = "jdbc:mysql://localhost:3306/" + database + "?user=" + user + "&password=" + password;
-            conn = DriverManager.getConnection(url);
-
-        } catch (SQLException exception){
-            throw  new SQLException(exception);
-        }
-        return conn;
-
-    }
     public boolean adicionarMembro(Membros membro) {
         String sql = "INSERT INTO membro (nome, descricao, id_cliente) VALUES (?, ?, ?)";
-        String url = "jdbc:mysql://localhost:3306/" + database + "?user=" + user + "&password=" + password;
 
-        try (Connection conn = DriverManager.getConnection(url);
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement psmt = conn.prepareStatement(sql)) {
 
             psmt.setString(1, membro.getNome());
@@ -45,30 +27,32 @@ public class MembrosDao {
         }
     }
 
-    public List<Membros> getMembro(){
-
+    public List<Membros> getMembro() {
         ResultSet rs = null;
         List<Membros> lsMembros = new ArrayList<>();
 
-        try (Connection conn = getConnection()){
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "SELECT m.id_membro, m.nome, m.descricao, m.id_cliente " +
+                    "FROM membro m " +
+                    "JOIN cliente c ON m.id_cliente = c.id_cliente";
 
-            String sql = "select m.id_membro, m.nome, m.descricao, m.id_cliente" +
-                    "from membro m" +
-                    "    join cliente c on m.id_cliente = c.id_cliente " +
-                    "    where c.id_cliente =?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             rs = preparedStatement.executeQuery();
 
-            while (rs.next()){
-                System.out.println(rs.getString("nome"));
-                Membros membros = new Membros(rs.getInt("id_membro") ,rs.getString("nome"), rs.getString("descricao"), rs.getInt("id_cliente"));
-            lsMembros.add(membros);
+            while (rs.next()) {
+                Membros membros = new Membros(
+                        rs.getInt("id_membro"),
+                        rs.getString("nome"),
+                        rs.getString("descricao"),
+                        rs.getInt("id_cliente")
+                );
+                lsMembros.add(membros);
             }
 
-
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+
         return lsMembros;
     }
 
@@ -76,7 +60,7 @@ public class MembrosDao {
         ResultSet rs = null;
         List<Membros> lsMembros = new ArrayList<>();
 
-        try (Connection conn = getConnection()) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = "SELECT m.id_membro, m.nome, m.descricao, m.id_cliente " +
                     "FROM membro m " +
                     "JOIN cliente c ON m.id_cliente = c.id_cliente " +
@@ -95,20 +79,19 @@ public class MembrosDao {
                 );
                 lsMembros.add(membros);
             }
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
         return lsMembros;
-
     }
 
     public void excluirMembroComVinculos(int idMembro, int idCliente) {
         String sqlDeleteVinculos = "DELETE FROM membro_hospital WHERE id_membro = ?";
         String sqlDeleteMembro = "DELETE FROM membro WHERE id_membro = ? AND id_cliente = ?";
 
-        try (Connection conn = getConnection()) {
-
+        try (Connection conn = DatabaseConnection.getConnection()) {
             conn.setAutoCommit(false); // inicia transação
 
             try (PreparedStatement ps1 = conn.prepareStatement(sqlDeleteVinculos);

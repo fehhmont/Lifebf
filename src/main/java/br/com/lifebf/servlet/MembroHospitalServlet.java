@@ -20,7 +20,7 @@ import java.util.List;
 @WebServlet("/membro/hospital")
 public class MembroHospitalServlet extends HttpServlet {
 
-
+//http://localhost:8080/membro/hospital?id_membro=2
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setHeader("Access-Control-Allow-Origin", "*");
