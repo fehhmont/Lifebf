@@ -13,6 +13,7 @@ public class Cliente {
     private String bairro;
     private String cidade;
     private int id_plano;
+    private String nome_plano;
 
 
     private String estado;
@@ -20,7 +21,7 @@ public class Cliente {
     // Construtor padrão
     public Cliente(){}
     // Construtor com parâmetros
-    public Cliente(int id_cliente,String nome, String email, String cpf, String senha, String planoSaude, String cep, String rua, String numero, String bairro, String cidade, String estado, int id_plano) {
+    public Cliente(int id_cliente,String nome, String email, String cpf, String senha, String planoSaude, String cep, String rua, String numero, String bairro, String cidade, String estado, int id_plano, String nome_plano) {
         this.id_cliente = id_cliente;
         this.nome = nome;
         this.email = email;
@@ -34,6 +35,7 @@ public class Cliente {
         this.cidade = cidade;
         this.estado = estado;
         this.id_plano = id_plano;
+        this.nome_plano = nome_plano;
     }
     public Cliente(String email, String senha){
         this.email = email;
@@ -145,5 +147,10 @@ public class Cliente {
     public int getId_plano() { return id_plano;}
 
     public void setId_plano(int id_plano) { this.id_plano = id_plano;}
+
+    public String getNome_plano() {return nome_plano;}
+
+    public void setNome_plano(String nome_plano) {this.nome_plano = nome_plano;}
+
 
 }

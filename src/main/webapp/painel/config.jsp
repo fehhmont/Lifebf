@@ -42,6 +42,8 @@
 
                 <div class="plan-info">
                     <p><strong>Plano de saude:</strong> <%= cliente.getPlanoSaude() %></p>
+                    <p><strong>Plano contratado:</strong> <%= cliente.getNome_plano() %></p>
+
                 </div>
 
                 <div class="personal-info">

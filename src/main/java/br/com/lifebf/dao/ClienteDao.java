@@ -76,7 +76,8 @@ public class ClienteDao {
                             resultSet.getString("bairro"),
                             resultSet.getString("cidade"),
                             resultSet.getString("estado"),
-                            resultSet.getInt("id_plano")
+                            resultSet.getInt("id_plano"),
+                            resultSet.getString("nome_plano")
                     );
                 }
             }
