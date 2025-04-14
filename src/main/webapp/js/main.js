@@ -14,3 +14,17 @@
         closeModal();
       }
     }
+
+
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const mensagens = document.querySelectorAll('.mensagem');
+
+            mensagens.forEach(msg => {
+                setTimeout(() => {
+                    msg.style.opacity = '0'; // fade out
+                    setTimeout(() => msg.remove(), 500); // remove após fade
+                }, 3000); // mostra por 3 segundos
+            });
+        });
+

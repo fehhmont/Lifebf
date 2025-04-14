@@ -228,3 +228,49 @@ h3 {
   color: white;
   margin-left: 10px;
 }
+
+.mensagem {
+    position: relative;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.5s ease-out;
+}
+
+.mensagem .close-x {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: inherit;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.mensagem.erro {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+    box-shadow: 0 2px 6px rgba(255, 0, 0, 0.1);
+}
+
+.mensagem.sucesso {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #34d399;
+    box-shadow: 0 2px 6px rgba(0, 255, 153, 0.1);
+}
+
+.mensagem i {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}

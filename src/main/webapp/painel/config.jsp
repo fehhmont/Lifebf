@@ -24,7 +24,7 @@
                             <a href="/membros" class="nav-item">Membros</a>
                             <a href="/planos" class="nav-item">Planos</a>
                             <a href="config.jsp" class="nav-item active">Configurações</a>
-                            <a href="logout.jsp" class="excluir">Sair</a>
+                            <a href="/logout" class="excluir">Sair</a>
                         </div>
 
         <div class="main-content">
