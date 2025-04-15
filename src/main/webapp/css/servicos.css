@@ -9,18 +9,18 @@ body {
 header {
     background-color: #2563eb;
     padding: 1rem;
+}
+
+header .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 header .logo {
     display: flex;
     align-items: center;
-}
-
-header .logo img {
-    margin-right: 0.5rem;
 }
 
 header nav a {
@@ -40,6 +40,17 @@ header button {
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
+
+}
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+
+.footer-section {
+    flex: 1; 
+    margin: 1rem;
 }
 
 main {
