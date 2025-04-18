@@ -274,3 +274,22 @@ h3 {
     font-weight: bold;
     font-size: 20px;
 }
+
+#modal .modal {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#qrcode {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
