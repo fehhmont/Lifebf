@@ -117,7 +117,7 @@
 <script>
 function mostrarQRCodeModal(idMembro) {
     const qr = document.getElementById("qrcode");
-    const url = "http://192.168.10.6:8080/membro/hospital?id_membro=" + idMembro;
+    const url = "http://192.168.1.105:8080/hospitalMaisProximo.html?id_membro=" + idMembro;
 
     qr.innerHTML = "";
     new QRCode(qr, {
@@ -159,9 +159,10 @@ function closeModal() {
 
 // Esconde automaticamente mensagens após 3 segundos
 setTimeout(() => {
-    const mensagens = document.querySelectorAll('.mensagem');
-    mensagens.forEach(el => el.style.opacity = '0');
-});
+        const mensagens = document.querySelectorAll('.mensagem');
+        mensagens.forEach(el => el.style.opacity = '0');
+    }, 3000);
+
 
 // Se houver flag para abrir modal
 <% if ("1".equals(String.valueOf(request.getAttribute("abrirModal")))) { %>

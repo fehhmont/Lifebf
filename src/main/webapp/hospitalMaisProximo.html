@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hospital mais próximo</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        #resultado {
+          margin-top: 20px;
+        }
+        li {
+          background-color: #f4f4f4;
+          margin: 10px 0;
+          padding: 15px;
+          border-radius: 8px;
+        }
+        .mapa {
+          margin-top: 15px;
+        }
+        .btn {
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 15px;
+          text-decoration: none;
+          border-radius: 5px;
+          display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<h2>Hospital mais próximo</h2>
+<div id="resultado">Obtendo localização e carregando hospitais...</div>
+
+<script>
+    function getParametroUrl(nome) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(nome);
+    }
+
+    function calcularDistancia(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) *
+        Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+
+    async function buscarHospitaisEComparar() {
+      const idMembro = getParametroUrl("id_membro");
+      if (!idMembro) {
+        document.getElementById("resultado").innerText = "Parâmetro 'id_membro' ausente na URL.";
+        return;
+      }
+
+      if (!navigator.geolocation) {
+        document.getElementById("resultado").innerText = "Geolocalização não é suportada por este navegador.";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(async pos => {
+        const userLat = pos.coords.latitude;
+        const userLon = pos.coords.longitude;
+
+        try {
+          const response = await fetch(`http://192.168.1.105:8080/membro/hospital?id_membro=${idMembro}`);
+          const hospitais = await response.json();
+
+          if (!Array.isArray(hospitais) || hospitais.length === 0) {
+            document.getElementById("resultado").innerText = "Nenhum hospital encontrado.";
+            return;
+          }
+
+          let hospitalMaisProximo = null;
+          let menorDistancia = Infinity;
+
+          hospitais.forEach(hospital => {
+            const distancia = calcularDistancia(
+              userLat,
+              userLon,
+              parseFloat(hospital.latitude),
+              parseFloat(hospital.longitude)
+            );
+
+            if (distancia < menorDistancia) {
+              menorDistancia = distancia;
+              hospitalMaisProximo = hospital;
+            }
+          });
+
+          // Monta endereço do hospital formatado para URL
+          const enderecoHospital = `${hospitalMaisProximo.rua} ${hospitalMaisProximo.numero}, ${hospitalMaisProximo.bairro}, ${hospitalMaisProximo.estado}`;
+          const enderecoFormatado = encodeURIComponent(enderecoHospital);
+          const rotaMapsUrl = `https://www.google.com/maps/dir/${userLat},${userLon}/${enderecoFormatado}`;
+
+          // Mostra o hospital mais próximo com botão
+          document.getElementById("resultado").innerHTML = `
+            <ul>
+              <li>
+                <strong>${hospitalMaisProximo.nome}</strong><br>
+                Endereço: ${hospitalMaisProximo.rua}, ${hospitalMaisProximo.numero} - ${hospitalMaisProximo.bairro}<br>
+                Estado: ${hospitalMaisProximo.estado}, CEP: ${hospitalMaisProximo.cep}<br>
+                Distância aproximada: ${menorDistancia.toFixed(2)} km<br>
+                <div class="mapa">
+                  <a href="${rotaMapsUrl}" class="btn" target="_blank">Ver rota no Google Maps</a>
+                </div>
+              </li>
+            </ul>
+          `;
+        } catch (erro) {
+          console.error("Erro na API:", erro);
+          document.getElementById("resultado").innerText = "Erro ao buscar os dados dos hospitais.";
+        }
+      }, erro => {
+        console.warn("Erro ao obter localização:", erro);
+        document.getElementById("resultado").innerText =
+          "Erro ao obter localização. Verifique se você permitiu o acesso à localização no navegador.";
+      });
+    }
+
+    window.onload = buscarHospitaisEComparar;
+</script>
+</body>
+</html>
