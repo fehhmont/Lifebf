@@ -117,7 +117,7 @@
 <script>
 function mostrarQRCodeModal(idMembro) {
     const qr = document.getElementById("qrcode");
-    const url = "http://192.168.1.105:8080/hospitalMaisProximo.html?id_membro=" + idMembro;
+    const url = "https://lifebf-production.up.railway.app/hospitalMaisProximo.html?id_membro=" + idMembro;
 
     qr.innerHTML = "";
     new QRCode(qr, {
