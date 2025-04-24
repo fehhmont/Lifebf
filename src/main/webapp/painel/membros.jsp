@@ -133,7 +133,14 @@
 
         </div>
 
-    <div class="modal-overlay" id="modal">
+
+
+    <!-- Biblioteca QRCode.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</div>
+
+<div class="modal-overlay" id="modal">
         <div class="modal">
             <h2>QR Code do Membro</h2>
             <div id="qrcode"></div>
@@ -144,16 +151,13 @@
             </div>
         </div>
     </div>
-
     <!-- Biblioteca QRCode.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-</div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
 function mostrarQRCodeModal(idMembro) {
     const qr = document.getElementById("qrcode");
-    const url = "http://192.168.1.105:8080/hospitalMaisProximo.html?id_membro=" + idMembro;
+    const url = "http://localhost:8080/hospitalMaisProximo.html?id_membro=" + idMembro;
 
     qr.innerHTML = "";
     new QRCode(qr, {

@@ -30,7 +30,14 @@
   align-items: center;
   z-index: 999;
 }
-
+.form-container input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            gap: 5px;
+        }
 .modal {
   background: #fff;
   padding: 20px;
@@ -39,28 +46,10 @@
   max-width: 400px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
-.form-container{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.modal input[type="text"],
-.modal input[type="email"] {
-  padding: 12px 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  background-color: #f9f9f9;
-}
 
-.modal input[type="text"]:focus,
-.modal input[type="email"]:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
-  background-color: #fff;
-}
+
+
+
 .submit-btn, .close-btn {
   padding: 10px 15px;
   border: none;
@@ -79,6 +68,11 @@
   margin-left: 10px;
 }
 
+.modal input[type="password"]:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+  background-color: #fff;
+}
 </style>
 <body>
     <div class="container">
@@ -95,7 +89,7 @@
             <div class="header">
                 <h1>Configurações</h1>
                 <div class="header-buttons">
-                    <button class="editar-info">Editar informações</button>
+                    <button class="editar-info" onclick="openEditar()">Editar informações</button>
                     <button class="alterar-senha" onclick="openAlterar()">Alterar senha</button>
                 </div>
             </div>
@@ -142,6 +136,24 @@
     </div>
 
 
+<div class="modal-overlay" id="modalEditarOverlay">
+    <div class="modal">
+        <h3>Editar Informações</h3>
+        <form action="/editarInformacoes" method="post" class="form-container">
+            <input type="text" name="nome" placeholder="Nome" value="<%= cliente.getNome() %>" required>
+            <input type="email" name="email" placeholder="Email" value="<%= cliente.getEmail() %>" required>
+            <input type="text" name="numero" placeholder="Número" value="<%= cliente.getNumero() %>" required>
+            <input type="text" name="rua" placeholder="Endereço" value="<%= cliente.getRua() %>" required>
+            <input type="text" name="bairro" placeholder="Bairro" value="<%= cliente.getBairro() %>" required>
+
+            <div style="text-align: right;">
+                <button type="submit" class="submit-btn">Salvar</button>
+                <button type="button" class="close-btn" onclick="closeEditarModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
     <script>
 
@@ -151,6 +163,14 @@
 
     function closeAlterarModal() {
         document.getElementById('modalAlterarOverlay').style.display = 'none';
+    }
+
+    function openEditar() {
+        document.getElementById('modalEditarOverlay').style.display = 'flex';
+    }
+
+    function closeEditarModal() {
+        document.getElementById('modalEditarOverlay').style.display = 'none';
     }
 
     // Esconde automaticamente mensagens após 3 segundos
