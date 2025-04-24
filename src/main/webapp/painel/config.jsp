@@ -16,6 +16,70 @@
     <title>Sistema de Membros</title>
     <link rel="stylesheet" href="css/config.css">
 </head>
+
+<style>
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.modal input[type="text"],
+.modal input[type="email"] {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #f9f9f9;
+}
+
+.modal input[type="text"]:focus,
+.modal input[type="email"]:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+  background-color: #fff;
+}
+.submit-btn, .close-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.close-btn {
+  background-color: #e74c3c;
+  color: white;
+  margin-left: 10px;
+}
+
+</style>
 <body>
     <div class="container">
         <div class="sidebar">
@@ -32,9 +96,12 @@
                 <h1>Configurações</h1>
                 <div class="header-buttons">
                     <button class="editar-info">Editar informações</button>
-                    <button class="alterar-senha">Alterar senha</button>
+                    <button class="alterar-senha" onclick="openAlterar()">Alterar senha</button>
                 </div>
             </div>
+
+
+
 
             <div class="profile-section">
 
@@ -60,7 +127,42 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="modalAlterarOverlay">
+                            <div class="modal">
+                                <h3>Inserir uma nova senha</h3>
+                                <form action="/alterarSenha" method="post" class="form-container">
+                                    <input type="password" id="senha" name="novaSenha" placeholder="***********">
+                                    <input type="password" id="senha" name="confirmarSenha" placeholder="Confirme a Senha">
+                                    <div style="text-align: right;">
+                                        <button type="submit" class="submit-btn">Alterar Senha</button>
+                                        <button type="button" class="close-btn" onclick="closeAlterarModal()">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+    </div>
 
-    <script src="main.js"></script>
+
+
+    <script>
+
+    function openAlterar() {
+        document.getElementById('modalAlterarOverlay').style.display = 'flex';
+    }
+
+    function closeAlterarModal() {
+        document.getElementById('modalAlterarOverlay').style.display = 'none';
+    }
+
+    // Esconde automaticamente mensagens após 3 segundos
+    setTimeout(() => {
+        const mensagens = document.querySelectorAll('.mensagem');
+        mensagens.forEach(el => el.style.opacity = '0');
+    }, 3000);
+
+
+    </script>
+
+
+
 </body>
 </html>
