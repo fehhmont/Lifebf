@@ -67,7 +67,7 @@
                 <td><%= m.getDescricao() %></td>
                 <td><a href="#" class="gerar-qr" onclick="mostrarQRCodeModal(<%= m.getId_membro() %>)">Gerar código QR</a></td>
                 <td>
-                    <a href="#" class="editar">Editar</a>
+                    <a href="#" class="editar" onclick="openEditModal()">Editar</a>
                     <a href="excluir-membro?id=<%= m.getId_membro()%>" onclick="return confirm('Deseja realmente excluir este membro? Isso irá excluir todos os hospitais cadastrados do membro <%= m.getNome() %>.');" class="excluir">Excluir</a>
                 </td>
             </tr>
@@ -96,6 +96,42 @@
         </div>
 
     </div>
+         <div class="modal-overlay" id="modalEditOverlay">
+                <div class="modal">
+                     <h2>Adicionar hospital</h2>
+                    <form action="membros" method="post" class="form-container">
+                        <input type="text" name="nome_membro" placeholder="Nome" required>
+                        <input type="text" name="cep" placeholder="CEP" required>
+                        <input type="text" name="rua" placeholder="Rua" required>
+                        <input type="text" name="estado" placeholder="Estado" required>
+                         <input type="text" name="bairro" placeholder="Bairro" required>
+                            <div class="hospital-list">
+                              <h3>Hospitais cadastrados:</h3>
+
+                              <div class="hospital-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hospital-icon">
+                                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                  <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <div class="hospital-info">
+                                  <h4 class="hospital-name">Hospital São Lucas</h4>
+                                  <p class="hospital-address">Avenida das Nações Unidas - Centro</p>
+                                  <div class="hospital-actions">
+                                    <button>Editar</button>
+                                    <button>Excluir</button>
+                                  </div>
+                                </div>
+
+                        <div style="text-align: right;">
+                            <button type="submit" class="submit-btn">Alterar dados</button>
+                            <button type="button" class="close-btn" onclick="closeEditModal()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
 
     <div class="modal-overlay" id="modal">
         <div class="modal">
@@ -152,7 +188,12 @@ function imprimirQRCode() {
 function openModal() {
     document.getElementById('modalOverlay').style.display = 'flex';
 }
-
+function openEditModal() {
+    document.getElementById('modalEditOverlay').style.display = 'flex';
+}
+function closeEditModal(){
+    document.getElementById('modalEditOverlay').style.display = 'none';
+}
 function closeModal() {
     document.getElementById('modalOverlay').style.display = 'none';
 }
