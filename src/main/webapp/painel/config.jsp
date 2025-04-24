@@ -8,6 +8,7 @@
     }
 %>
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -73,6 +74,14 @@
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
   background-color: #fff;
 }
+.mensagem.erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
 </style>
 <body>
     <div class="container">
@@ -86,6 +95,9 @@
                         </div>
 
         <div class="main-content">
+
+
+
             <div class="header">
                 <h1>Configurações</h1>
                 <div class="header-buttons">
@@ -94,7 +106,15 @@
                 </div>
             </div>
 
-
+ <%
+            String mensagemErro = (String) session.getAttribute("mensagemErro");
+            if (mensagemErro != null) {
+        %>
+            <div class="mensagem erro"><%= mensagemErro %></div>
+        <%
+                session.removeAttribute("mensagemErro");
+            }
+        %>
 
 
             <div class="profile-section">
