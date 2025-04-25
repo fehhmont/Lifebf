@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/create-life")
-
 public class ClienteServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         String lifeName = request.getParameter("nome");
         String lifeemail = request.getParameter("email");
@@ -45,12 +45,14 @@ public class ClienteServlet extends HttpServlet {
 
         ClienteDao clienteDao = new ClienteDao();
 
-        clienteDao.createCliente(cliente);
+        try {
+            clienteDao.createCliente(cliente);
+            // Sucesso: encaminha para página de membros
+            response.sendRedirect("membros");
 
-
-
-        request.getRequestDispatcher("/membros").forward(request, response);
-
+        } catch (RuntimeException e) {
+            // Falha: volta para tela de cadastro com parâmetro de erro
+            response.sendRedirect("cadastro.html?erro=1");
+        }
     }
-
 }

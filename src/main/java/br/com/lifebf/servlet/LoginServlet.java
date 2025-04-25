@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
             req.getSession().setAttribute("cliente", cliente); // Salva o cliente na sessão
             resp.sendRedirect("/membros"); // Redireciona para o painel
         } else {
-            resp.getWriter().write("E-mail ou senha incorretos!");
+            resp.sendRedirect("login.html?erro=1");
         }
     }
 }
