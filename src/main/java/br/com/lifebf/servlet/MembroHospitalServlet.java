@@ -1,6 +1,7 @@
 package br.com.lifebf.servlet;
 
 import br.com.lifebf.dao.DatabaseConnection;
+import br.com.lifebf.dao.MembrosDao;
 import br.com.lifebf.model.Hospital;
 import com.google.gson.Gson;
 
@@ -84,5 +85,14 @@ public class MembroHospitalServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().write("{\"erro\": \"Erro ao buscar hospitais: " + e.getMessage() + "\"}");
         }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int idHospital = Integer.parseInt(req.getParameter("id_hospital"));
+        MembrosDao membrosDao = new MembrosDao();
+        membrosDao.excluirMembroHospital(idHospital);
+        System.out.println("Excluido");
+        resp.getWriter().write("Hospital excluido");
     }
 }

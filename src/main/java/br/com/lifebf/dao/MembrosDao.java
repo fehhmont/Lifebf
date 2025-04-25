@@ -1,7 +1,9 @@
 package br.com.lifebf.dao;
 
+import br.com.lifebf.model.Hospital;
 import br.com.lifebf.model.Membros;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +88,17 @@ public class MembrosDao {
 
         return lsMembros;
     }
-
+    public void excluirMembroHospital(int idHospital){
+        try(Connection conn = DatabaseConnection.getConnection()){
+            String sqlDelete = "DELETE FROM membro_hospital WHERE id_hospital = ?";
+            PreparedStatement psmt = conn.prepareStatement(sqlDelete);
+            psmt.setInt(1, idHospital);
+            psmt.execute();
+        }
+        catch (SQLException sqlException){
+            throw  new RuntimeException("Erro ao excluir hospital do membro");
+        }
+    }
     public void excluirMembroComVinculos(int idMembro, int idCliente) {
         String sqlDeleteVinculos = "DELETE FROM membro_hospital WHERE id_membro = ?";
         String sqlDeleteMembro = "DELETE FROM membro WHERE id_membro = ? AND id_cliente = ?";
