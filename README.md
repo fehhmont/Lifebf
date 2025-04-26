@@ -7,9 +7,9 @@ Projeto integrador 3º semestre
 ## Funcionalidades
 
 - Acesso via login e cadastro de usuário
-- Consumo de API de mapa
+- Criação, alteração e exclusão de membros
 - Consumo de API de QR Code
-- Gerenciamento de QR Code e chat
+- Gerenciamento de QR Code
 
 
 ## Telas de prototipação
