@@ -7,7 +7,7 @@ public class Hospital {
     private String nome;
     private String cep;
     private String rua;
-    private int numero;
+    private String numero;
     private String bairro;
     private String estado;
     private BigDecimal latitude;
@@ -17,7 +17,7 @@ public class Hospital {
 
 
     // Construtor
-    public Hospital(int idHospital, String nome, String cep, String rua, int numero, String bairro, String estado, BigDecimal latitude, BigDecimal longitude, int idMembro) {
+    public Hospital(int idHospital, String nome, String cep, String rua, String numero, String bairro, String estado, BigDecimal latitude, BigDecimal longitude, int idMembro) {
         this.idHospital = idHospital;
         this.nome = nome;
         this.cep = cep;
@@ -28,8 +28,8 @@ public class Hospital {
         this.latitude = latitude;
         this.longitude = longitude;
         this.idMembro = idMembro;
-
     }
+    public Hospital(){}
 
     // Getters e Setters
 
@@ -82,11 +82,11 @@ public class Hospital {
         this.rua = rua;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

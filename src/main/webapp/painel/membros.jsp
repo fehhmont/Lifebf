@@ -100,7 +100,7 @@
                 <div class="modal">
                      <h2>Adicionar hospital</h2>
                     <form action="membros" method="post" class="form-container">
-                        <input type="text" name="nome_membro" placeholder="Nome do hospital" required>
+                        <input type="text" name="nome_hospital" placeholder="Nome do hospital" required>
                         <input type="text" name="cep" placeholder="CEP" required id="cep" onblur="getAddress()">
                         <input type="text" name="rua" placeholder="Rua" required>
                         <input type="text" name="estado" placeholder="Estado" required>
@@ -111,7 +111,7 @@
 
                      </div>
                      <div style="text-align: right;">
-                        <button type="submit" class="submit-btn">Adicionar hospital</button>
+                        <button type="button" class="submit-btn" onclick="adicionarHospital()">Adicionar hospital</button>
                         <button type="button" class="close-btn" onclick="closeEditModal()">Cancelar</button>
                     </div>
                     </form>
@@ -167,6 +167,33 @@ function mostrarQRCodeModal(idMembro) {
 function fecharQRCodeModal() {
     document.getElementById("modal").style.display = "none";
 }
+async function adicionarHospital(){
+    const formData = new FormData();
+    const url = "http://localhost:8080/hospital";
+     formData.append("nome", document.querySelector("input[name='nome_hospital']").value);
+    formData.append("cep", document.querySelector("input[name='cep']").value);
+    formData.append("rua", document.querySelector("input[name='rua']").value);
+    formData.append("estado", document.querySelector("input[name='estado']").value);
+    formData.append("bairro", document.querySelector("input[name='bairro']").value);
+    formData.append("numero", document.querySelector("input[name='numero']").value);
+    formData.append("latitude", sessionStorage.getItem('lat'));
+    formData.append("longitude", sessionStorage.getItem('lng'));
+    formData.append("id_membro", sessionStorage.getItem('id_membro'));
+
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Hospital adicionado com sucesso!");
+            location.reload();
+        } else {
+            alert("Erro ao adicionar hospital.");
+        }
+    })
+}
+
 
 function imprimirQRCode() {
     const printWindow = window.open('', '_blank');
@@ -185,6 +212,8 @@ async function getAddress(){
     try {
         const response = await fetch(url);
         const data = await response.json();
+        sessionStorage.setItem('lat', data.lat);
+        sessionStorage.setItem('lng', data.lng);
         document.querySelector("input[name='rua']").value = data.address;
         document.querySelector("input[name='estado']").value = data.state;
         document.querySelector("input[name='bairro']").value = data.district;
@@ -194,9 +223,10 @@ async function getAddress(){
 
 }
 async function getHospitais(id){
+    sessionStorage.setItem('id_membro', id);
     const url = "http://localhost:8080/membro/hospital?id_membro=" + id;
     const containerHospitalList = document.querySelector('.hospital-list');
-     // Limpa a lista antes de adicionar novos hospitais
+    containerHospitalList.innerHTML = "";
     let data = [];
     await fetch(url)
     .then((res) => res.json())
@@ -204,7 +234,7 @@ async function getHospitais(id){
     .catch((error) => console.error('Erro ao buscar hospitais:', error));
     if(data.length >0){
         data.map((index) =>{
-            console.log(index);
+    
             containerHospitalList.innerHTML +=
                 '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"' +
                 ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hospital-icon">' +

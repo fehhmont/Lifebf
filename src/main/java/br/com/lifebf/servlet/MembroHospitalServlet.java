@@ -67,7 +67,7 @@ public class MembroHospitalServlet extends HttpServlet {
                         rs.getString("nome"),
                         rs.getString("cep"),
                         rs.getString("rua"),
-                        rs.getInt("numero"),
+                        rs.getString("numero"),
                         rs.getString("bairro"),
                         rs.getString("estado"),
                         rs.getBigDecimal("latitude"),
