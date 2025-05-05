@@ -23,7 +23,7 @@
 <div class="container">
     <div class="sidebar">
         <div class="user-name"><%= cliente.getNome() %></div>
-        <a href="#" class="nav-item">Painel</a>
+        <a href="/painel" class="nav-item">Painel</a>
         <a href="/membros" class="nav-item active">Membros</a>
         <a href="/planos" class="nav-item">Planos</a>
         <a href="painel/config.jsp" class="nav-item">Configurações</a>
@@ -97,8 +97,10 @@
 
     </div>
          <div class="modal-overlay" id="modalEditOverlay">
+
                 <div class="modal">
                      <h2>Adicionar hospital</h2>
+
                     <form action="membros" method="post" class="form-container">
                         <input type="text" name="nome_hospital" placeholder="Nome do hospital" required>
                         <input type="text" name="cep" placeholder="CEP" required id="cep" onblur="getAddress()">
@@ -236,15 +238,10 @@ async function getHospitais(id){
         data.map((index) =>{
     
             containerHospitalList.innerHTML +=
-                '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"' +
-                ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hospital-icon">' +
-                '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>' +
-                '<circle cx="12" cy="10" r="3"></circle>' +
-                '</svg>' +
                 '<div class="hospital-info">' +
                 '<h4 class="hospital-name">'+ index.nome + '</h4>' +
                 '<p class="hospital-address">' + index.rua + '</p>' +
-                '<button class="hospital-delete" onclick="deleteHospital('+ index.idHospital +')">Excluir</button>' +
+                '<button class="close-btn" onclick="deleteHospital('+ index.idHospital +')">Excluir</button>' +
                 '</div>';
         })
     }
