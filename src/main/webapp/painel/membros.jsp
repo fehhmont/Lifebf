@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Membros</title>
+    <title>LifeBF</title>
     <link rel="stylesheet" href="/painel/css/membros.css">
 </head>
 <body>

@@ -1,4 +1,4 @@
-Drop DATABASE lifebf;
+drop database lifebf;
 CREATE DATABASE  lifebf;
 USE lifebf;
 
@@ -13,8 +13,8 @@ CREATE TABLE plano (
 CREATE TABLE cliente (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    email VARCHAR(120) NOT NULL UNIQUE,
-    cpf VARCHAR(13) NOT NULL UNIQUE,
+    email VARCHAR(120) NOT NULL unique,
+    cpf VARCHAR(20) NOT NULL ,
     senha VARCHAR(100) NOT NULL,
     plano_saude VARCHAR(20) NOT NULL,
     cep VARCHAR(10) NOT NULL,
@@ -70,23 +70,23 @@ CREATE TABLE membro_hospital (
     FOREIGN KEY (id_hospital) REFERENCES hospital(id_hospital)
 );
 
-INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
-("admin", "admin@admin.com", "12345678", "admin", "Unimed", "01001-000", "Avenida Paulista", "1000", "Bela Vista", "São Paulo", "SP");
+INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado,id_plano) VALUES
+("admin", "admin@admin.com", "12345678", "admin", "Unimed", "01001-000", "Avenida Paulista", "1000", "Bela Vista", "São Paulo", "SP",1);
 
 INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
-("Carlos Silva", "carlos.silva@email.com", "12345678901", "senha123", "Unimed", "01001-000", "Avenida Paulista", "1000", "Bela Vista", "São Paulo", "SP");
+("Carlos Silva", "carlos.silva@email.com", "12345678901", "senha123", "Unimed", "01001-000", "Avenida Paulista", "1000", "Bela Vista", "São Paulo", "SP",1);
 
 INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
-("Ana Souza", "ana.souza@email.com", "98765432100", "senha456", "Amil", "20031-007", "Rua do Ouvidor", "250", "Centro", "Rio de Janeiro", "RJ");
+("Ana Souza", "ana.souza@email.com", "98765432100", "senha456", "Amil", "20031-007", "Rua do Ouvidor", "250", "Centro", "Rio de Janeiro", "RJ",1);
 
 INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
-("João Pereira", "joao.pereira@email.com", "32165498702", "segura789", "Bradesco Saúde", "30110-000", "Avenida Afonso Pena", "500", "Centro", "Belo Horizonte", "MG");
+("João Pereira", "joao.pereira@email.com", "32165498702", "segura789", "Bradesco Saúde", "30110-000", "Avenida Afonso Pena", "500", "Centro", "Belo Horizonte", "MG",1);
 
 INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
-("Mariana Costa", "mariana.costa@email.com", "74185296301", "mariana@321", "SulAmérica", "40020-002", "Rua Chile", "80", "Centro", "Salvador", "BA");
+("Mariana Costa", "mariana.costa@email.com", "74185296301", "mariana@321", "SulAmérica", "40020-002", "Rua Chile", "80", "Centro", "Salvador", "BA",1);
 
 INSERT INTO cliente (nome, email, cpf, senha, plano_saude, cep, rua, numero, bairro, cidade, estado) VALUES
-("Fernando Oliveira", "fernando.oliveira@email.com", "15935748602", "pass123", "Golden Cross", "80010-000", "Rua XV de Novembro", "300", "Centro", "Curitiba", "PR");
+("Fernando Oliveira", "fernando.oliveira@email.com", "15935748602", "pass123", "Golden Cross", "80010-000", "Rua XV de Novembro", "300", "Centro", "Curitiba", "PR",1);
 
 
 
@@ -138,7 +138,7 @@ INSERT INTO membro_hospital (id_membro, id_hospital) VALUES
 (5, 15);
 
 
-select * from cliente c
+select * from cliente
 inner join plano p on c.id_plano = p.id_plano;
 
 
@@ -169,5 +169,3 @@ select m.id_membro, m.nome, m.descricao, m.id_cliente
     `cliente`.`cidade`,
     `cliente`.`estado`
 FROM `lifebf`.`cliente`;
-
-

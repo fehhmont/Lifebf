@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Membros</title>
+    <title>LifeBF</title>
     <link rel="stylesheet" href="css/config.css">
 </head>
 
@@ -87,7 +87,7 @@
     <div class="container">
         <div class="sidebar">
                             <div class="user-name"><%= cliente.getNome() %></div>
-                            <a href="#s" class="nav-item">Painel</a>
+                            <a href="/painel" class="nav-item">Painel</a>
                             <a href="/membros" class="nav-item">Membros</a>
                             <a href="/planos" class="nav-item">Planos</a>
                             <a href="config.jsp" class="nav-item active">Configurações</a>

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-image: url('img/image_fundo.png');
@@ -18,63 +22,77 @@
             align-items: center;
             height: 100vh;
         }
+
         .container {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.452);
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            width: 600px;
-            max-width: 90%;
+            max-width: 600px;
+            width: 100%;
         }
+
         .container h2 {
             text-align: center;
         }
+
         .login-link {
             text-align: center;
             margin-bottom: 20px;
             font-size: 16px;
         }
+
         .login-link p {
             display: inline;
         }
+
         .login-link a {
             color: #007bff;
             text-decoration: none;
             font-weight: bold;
             margin-left: 5px;
         }
+
         .login-link a:hover {
             text-decoration: underline;
         }
-        /* Layout de duas colunas */
+
         .form-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* Aumentei o espaçamento entre as colunas */
+            gap: 20px;
         }
+
         .form-group {
-            width: calc(50% - 10px); /* Ajuste para o novo gap */
+            flex: 1 1 calc(50% - 10px);
+            min-width: 0;
         }
+
         .form-group label {
             display: block;
             font-weight: bold;
         }
+
         .form-group input {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
         }
+
         .full-width {
             width: 100%;
         }
+
         .checkbox-container {
             display: flex;
             align-items: center;
             gap: 10px;
             margin: 15px 0;
         }
+
         .container button {
             width: 100%;
             padding: 12px;
@@ -85,53 +103,52 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         .container button:hover {
             background-color: #56A5D3;
         }
+
         @media (max-width: 600px) {
             .form-group {
-                width: 100%;
+                flex: 1 1 100%;
             }
         }
+
         .back-button:hover {
             background-color: rgba(255, 255, 255, 0.4);
             border-color: rgba(0, 0, 0, 0.6);
         }
+
         .back-button {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             background-color: rgba(255, 255, 255, 0.2);
             color: black;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border: 2px solid rgba(0, 0, 0, 0.3);
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             transition: background-color 0.3s, border-color 0.3s;
         }
-         .back-button {
-                top: 10px;
-                left: 10px;
-                padding: 8px 12px;
-                font-size: 14px;
-            }
     </style>
 </head>
 <body>
 <button class="back-button" onclick="window.location.href='index.html'">← Voltar</button>
 <div class="container">
 
-
     <h2>Cadastre-se</h2>
 
     <div class="login-link">
         <p>Já Registrado?</p> <a href="login.html">Conecte-se</a>
     </div>
+
     <div id="mensagemErro" style="display: none; color: red; font-weight: bold; margin-bottom: 15px;">
-        Email já esta sendo utilizado. Tente novamente.
+        Email já está sendo utilizado. Tente novamente.
     </div>
+
     <form id="registrationForm" action="/create-life" method="post">
         <div class="form-grid">
             <div class="form-group">
@@ -144,7 +161,7 @@
             </div>
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF"  maxlength="14" oninput="mascaraCPF(this)" required>
+                <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" maxlength="14" oninput="mascaraCPF(this)" required>
             </div>
             <div class="form-group">
                 <label for="senha">Senha</label>
@@ -156,7 +173,7 @@
             </div>
             <div class="form-group">
                 <label for="cep">CEP</label>
-                <input type="text" id="cep" name="cep" placeholder="Digite o CEP" required maxlength="9" oninput="mascaraCEP(this)">
+                <input type="text" id="cep" name="cep" placeholder="Digite o CEP" maxlength="9" oninput="mascaraCEP(this)" required>
             </div>
             <div class="form-group">
                 <label for="rua">Rua</label>
@@ -181,33 +198,29 @@
         </div>
         <div class="checkbox-container">
             <input type="checkbox" id="termos" required>
-            <label for="termos">Eu li e aceito os Termos de uso</label>
+            <label for="termos">Eu li e aceito os <a href="termo.html" target="_blank">Termos de uso</a></label>
         </div>
         <button type="submit">Cadastrar</button>
     </form>
 </div>
 </body>
-<script> const urlParams = new URLSearchParams(window.location.search);
-       if (urlParams.get('erro') === '1') {
-           document.getElementById('mensagemErro').style.display = 'block';
-       }
-
-function mascaraCPF(campo) {
-      let cpf = campo.value.replace(/\D/g, ''); // Remove não-dígitos
-
-      if (cpf.length > 3 && cpf.length <= 6) {
-        cpf = cpf.replace(/(\d{3})(\d+)/, '$1.$2');
-      } else if (cpf.length > 6 && cpf.length <= 9) {
-        cpf = cpf.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
-      } else if (cpf.length > 9) {
-        cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
-      }
-
-      campo.value = cpf;
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('erro') === '1') {
+        document.getElementById('mensagemErro').style.display = 'block';
     }
 
-
-
+    function mascaraCPF(campo) {
+        let cpf = campo.value.replace(/\D/g, '');
+        if (cpf.length > 3 && cpf.length <= 6) {
+            cpf = cpf.replace(/(\d{3})(\d+)/, '$1.$2');
+        } else if (cpf.length > 6 && cpf.length <= 9) {
+            cpf = cpf.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+        } else if (cpf.length > 9) {
+            cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
+        }
+        campo.value = cpf;
+    }
 </script>
 <script src="js/validacaocep.js"></script>
 </html>
