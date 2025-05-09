@@ -14,7 +14,7 @@ Projeto integrador 3º semestre
 
 ## Telas de prototipação
 
-![Home](https://github.com/fehhmont/LifeBF/blob/main/telas-figma/home.PNG)
+![Home](/telas-figma/main.png)
 ![login](https://github.com/fehhmont/LifeBF/blob/main/telas-figma/login.PNG)
 ![cadastro](https://github.com/fehhmont/LifeBF/blob/main/telas-figma/cadastro.PNG)
 ![tela de membros](https://github.com/fehhmont/LifeBF/blob/main/telas-figma/painel-membros.PNG)
