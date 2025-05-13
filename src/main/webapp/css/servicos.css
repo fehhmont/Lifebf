@@ -227,25 +227,20 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-icon {
+.social-links a i {
     color: white;
     transition: color 0.3s;
 }
 
-.social-icon:hover {
-    color: #bfdbfe;
+.social-links a i:hover {
+    color: #ffffff;
 }
+
 
 .footer-bottom {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid #2563eb;
+    border-top: 1px solid #ffffff;
     text-align: center;
     color: #bfdbfe;
 }
-
