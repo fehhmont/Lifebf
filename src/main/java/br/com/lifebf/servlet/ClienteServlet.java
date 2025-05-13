@@ -48,7 +48,7 @@ public class ClienteServlet extends HttpServlet {
         try {
             clienteDao.createCliente(cliente);
             // Sucesso: encaminha para página de membros
-            response.sendRedirect("membros");
+            response.sendRedirect("login.html?sucesso=1");
 
         } catch (RuntimeException e) {
             // Falha: volta para tela de cadastro com parâmetro de erro
