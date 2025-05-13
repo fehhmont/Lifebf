@@ -1,3 +1,4 @@
+
 <%@ page import="br.com.lifebf.model.Cliente" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.com.lifebf.model.Membros" %>
@@ -85,20 +86,9 @@
                     </div>
                     <div class="card">
                       <h3>Hospitais Cadastrado</h3>
-                      <p>73</p>
+                      <p>${totalHospital}</p>
                     </div>
-                    <div class="card">
-                      <h3>Profissionais de Plantão</h3>
-                      <p>46</p>
-                    </div>
-                    <div class="card">
-                      <h3>Leitos Disponíveis</h3>
-                      <p>14</p>
-                    </div>
-                    <div class="card">
-                      <h3>Consultas Realizadas</h3>
-                      <p>215</p>
-                    </div>
+
                   </main>
 
             </div>

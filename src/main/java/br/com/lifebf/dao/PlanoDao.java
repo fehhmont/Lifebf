@@ -23,7 +23,8 @@ public class PlanoDao {
                         rs.getInt("id_plano"),
                         rs.getString("nome_plano"),
                         rs.getDouble("preco_plano"),
-                        rs.getInt("quantidade_membros")
+                        rs.getInt("quantidade_membros"),
+                        rs.getInt("quantidade_endereco")
                 );
                 lsPlanos.add(plano);
             }

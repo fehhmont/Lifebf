@@ -5,12 +5,16 @@ public class Plano {
     private String nomePlano;
     private double precoPlano;
     private int quantidadeMembros;
+    private int quantidadeEndereco;
 
-    public Plano(int id_plano,String nomePlano, double precoPlano, int quantidadeMembros) {
+
+
+    public Plano(int id_plano, String nomePlano, double precoPlano, int quantidadeMembros, int quantidadeEndereco) {
         this.id_plano = id_plano;
         this.nomePlano = nomePlano;
         this.precoPlano = precoPlano;
         this.quantidadeMembros = quantidadeMembros;
+        this.quantidadeEndereco = quantidadeEndereco;
     }
     public Plano(){
 
@@ -47,4 +51,10 @@ public class Plano {
     public void setQuantidadeMembros(int quantidadeMembros) {
         this.quantidadeMembros = quantidadeMembros;
     }
+
+    public int getQuantidadeEndereco() {return quantidadeEndereco;}
+
+    public void setQuantidadeEndereco(int quantidadeEndereco) {this.quantidadeEndereco = quantidadeEndereco;}
+
+
 }

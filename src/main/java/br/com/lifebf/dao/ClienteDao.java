@@ -111,4 +111,29 @@ public class ClienteDao {
 
         return total;
     }
+    public int contarHospitalPorCliente(int idCliente) {
+        int total = 0;
+        String sql = "SELECT COUNT(m.id_membro) " +
+                "FROM hospital h " +
+                "JOIN membro_hospital mh ON h.id_hospital = mh.id_hospital " +
+                "JOIN membro m ON mh.id_membro = m.id_membro " +
+                "JOIN cliente c ON m.id_cliente = c.id_cliente " +
+                "WHERE c.id_cliente = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idCliente);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return total;
+    }
 }

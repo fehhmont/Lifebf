@@ -41,6 +41,61 @@
         .btn-azul:hover {
             background-color: #0056b3;
         }
+
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1,1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card p span {
+    font-size: 1.25rem;
+}
+
+.card ul {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.card ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.card ul li i {
+    color: #10b981;
+    margin-right: 0.75rem;
+}
+
+
+
+.card-blue {
+    background-color: #2563eb;
+    color: white;
+    position: relative;
+}
+
+.card-blue::before {
+    content: '\1F451';
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.card-blue button {
+    background-color: white;
+    color: #2563eb;
+}
     </style>
 <body>
     <div class="container">
@@ -63,13 +118,17 @@
 
     <div class="plans">
         <c:forEach var="plano" items="${planos}">
-            <div class="plan">
-                <div class="p-4">
+            <div class="card">
+
                     <h3>${plano.nomePlano}</h3>
+                    <br>
                     <ul>
-                        <li>Criação de Membros: ${plano.quantidadeMembros}</li>
+                        <li><i class="fas fa-check"></i>${plano.quantidadeMembros}  Criação de Membros</li>
+                        <li><i class="fas fa-check"></i>${plano.quantidadeEndereco} endereços por membro</li>
                     </ul>
-                    <p>Preço: R$ ${plano.precoPlano}</p>
+                    <br>
+                    <p>Preço: R$ ${plano.precoPlano}<span>/mês</span></p>
+                    <br>
                     <c:choose>
                         <c:when test="${plano.id_plano == cliente.getId_plano()}">
                             <button class="btn-cinza" disabled>Selecionado</button>
@@ -81,7 +140,7 @@
                             </form>
                         </c:otherwise>
                     </c:choose>
-                </div>
+
             </div>
         </c:forEach>
     </div>
