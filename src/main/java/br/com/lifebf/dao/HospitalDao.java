@@ -45,4 +45,5 @@ public class HospitalDao {
             throw  new RuntimeException(e);
         }
     }
+
 }

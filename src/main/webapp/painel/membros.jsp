@@ -113,7 +113,7 @@
 
                      </div>
                      <div style="text-align: right;">
-                        <button type="button" class="submit-btn" onclick="adicionarHospital()">Adicionar hospital</button>
+                        <button type="button" class="submit-btn" onclick="adicionarHospital('<%=cliente.getId_plano()%>')">Adicionar hospital</button>
                         <button type="button" class="close-btn" onclick="closeEditModal()">Cancelar</button>
                     </div>
                     </form>
@@ -169,7 +169,8 @@ function mostrarQRCodeModal(idMembro) {
 function fecharQRCodeModal() {
     document.getElementById("modal").style.display = "none";
 }
-async function adicionarHospital(){
+async function adicionarHospital(idPlano){
+
     const formData = new FormData();
     const url = "http://localhost:8080/hospital";
      formData.append("nome", document.querySelector("input[name='nome_hospital']").value);
@@ -181,6 +182,7 @@ async function adicionarHospital(){
     formData.append("latitude", sessionStorage.getItem('lat'));
     formData.append("longitude", sessionStorage.getItem('lng'));
     formData.append("id_membro", sessionStorage.getItem('id_membro'));
+    formData.append("id_plano", idPlano);
 
     fetch(url, {
         method: 'POST',
@@ -275,7 +277,11 @@ function deleteHospital(id_hospital){
             alert("Erro ao excluir hospital.");
         }
     })
-    .catch(error => console.error('Erro ao excluir hospital:', error));
+    .catch(error =>{ 
+        console.log(error);
+        console.error('Erro ao excluir hospital:', error)
+    
+    });
 }
 
 // Esconde automaticamente mensagens após 3 segundos

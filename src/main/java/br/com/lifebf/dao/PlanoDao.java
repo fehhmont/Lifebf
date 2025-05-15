@@ -24,7 +24,8 @@ public class PlanoDao {
                         rs.getString("nome_plano"),
                         rs.getDouble("preco_plano"),
                         rs.getInt("quantidade_membros"),
-                        rs.getInt("quantidade_endereco")
+                        rs.getInt("quantidade_endereco"),
+                        rs.getInt("quantidade_hospitais")
                 );
                 lsPlanos.add(plano);
             }
@@ -51,6 +52,7 @@ public class PlanoDao {
                 plano.setNomePlano(rs.getString("nome_plano"));
                 plano.setPrecoPlano(rs.getDouble("preco_plano"));
                 plano.setQuantidadeMembros(rs.getInt("quantidade_membros"));
+                plano.setQuantidadeHospital(rs.getInt("quantidade_hospitais"));
             }
 
         } catch (SQLException ex) {
@@ -82,5 +84,26 @@ public class PlanoDao {
         }
 
         return limitePlano;
+    }
+
+    public boolean validarQuantidadeHospitais(int idPlano, int idMembro) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "SELECT COUNT(*) AS total FROM membro_hospital WHERE id_membro = ?";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setInt(1, idMembro);
+            ResultSet rs = psmt.executeQuery();
+            if (rs.next()) {
+                int hospitaisDoMembro = rs.getInt("total");
+                Plano plano = getPlano(idPlano);
+                int limite = plano.getQuantidadeHospital();
+
+                return hospitaisDoMembro < limite;
+            }
+
+
+        } catch (SQLException sqlException) {
+            throw new RuntimeException("Ocorreu um erro: " + sqlException.getMessage());
+        }
+        return false;
     }
 }

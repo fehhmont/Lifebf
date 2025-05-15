@@ -6,15 +6,17 @@ public class Plano {
     private double precoPlano;
     private int quantidadeMembros;
     private int quantidadeEndereco;
+    private int quantidadeHospital;
 
 
 
-    public Plano(int id_plano, String nomePlano, double precoPlano, int quantidadeMembros, int quantidadeEndereco) {
+    public Plano(int id_plano, String nomePlano, double precoPlano, int quantidadeMembros, int quantidadeEndereco, int quantidadeHospital) {
         this.id_plano = id_plano;
         this.nomePlano = nomePlano;
         this.precoPlano = precoPlano;
         this.quantidadeMembros = quantidadeMembros;
         this.quantidadeEndereco = quantidadeEndereco;
+        this.quantidadeHospital = quantidadeHospital;
     }
     public Plano(){
 
@@ -55,6 +57,12 @@ public class Plano {
     public int getQuantidadeEndereco() {return quantidadeEndereco;}
 
     public void setQuantidadeEndereco(int quantidadeEndereco) {this.quantidadeEndereco = quantidadeEndereco;}
+    public int getQuantidadeHospital() {
+        return quantidadeHospital;
+    }
 
+    public void setQuantidadeHospital(int quantidadeHospital) {
+        this.quantidadeHospital = quantidadeHospital;
+    }
 
 }
