@@ -25,7 +25,7 @@ public class PlanoDao {
                         rs.getDouble("preco_plano"),
                         rs.getInt("quantidade_membros"),
                         rs.getInt("quantidade_endereco"),
-                        rs.getInt("quantidade_hospitais")
+                         2
                 );
                 lsPlanos.add(plano);
             }

@@ -99,7 +99,7 @@
     </style>
 <body>
     <div class="container">
-        
+
 
         <div class="sidebar">
                             <div class="user-name"><%= cliente.getNome() %></div>
@@ -110,7 +110,7 @@
                             <a href="/logout" class="excluir">Sair</a>
                         </div>
 
-        
+
         <div class="main-content">
 
             <h1>Planos</h1>

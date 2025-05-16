@@ -293,3 +293,6 @@ h3 {
     gap: 10px;
     margin-top: 20px;
 }
+.hospital-list{
+    overflow: hidden;
+}
