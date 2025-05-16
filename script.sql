@@ -5,7 +5,8 @@ CREATE TABLE plano (
     nome_plano VARCHAR(200) NOT NULL,
     preco_plano DECIMAL(5,2) NOT NULL,
     quantidade_membros INT NOT NULL,
-    quantidade_hospitais int not null
+    quantidade_endereco INT NOT NULL,
+    quantidade_hospitais INT NOT NULL
 );
 
 CREATE TABLE cliente (
@@ -50,14 +51,14 @@ CREATE TABLE hospital (
 
 
 
-INSERT INTO plano (nome_plano, preco_plano, quantidade_membros, quantidade_hospitais)
-VALUES ('Plano Básico', 0, 1, 2);
+INSERT INTO plano (nome_plano, preco_plano, quantidade_membros,quantidade_endereco ,quantidade_hospitais)
+VALUES ('Plano Básico', 0, 1, 2,2);
 
-INSERT INTO plano (nome_plano, preco_plano, quantidade_membros, quantidade_hospitais)
-VALUES ('Plano Família', 129.90, 4, 4);
+INSERT INTO plano (nome_plano, preco_plano, quantidade_membros,quantidade_endereco ,quantidade_hospitais)
+VALUES ('Plano Família', 129.90, 4,4,4);
 
-INSERT INTO plano (nome_plano, preco_plano, quantidade_membros, quantidade_hospitais)
-VALUES ('Plano Empresarial', 299.90, 10, 4);
+INSERT INTO plano (nome_plano, preco_plano, quantidade_membros,quantidade_endereco,quantidade_hospitais)
+VALUES ('Plano Empresarial', 299.90, 10, 4,4);
 
 
 
@@ -170,5 +171,3 @@ select * from cliente;
     `cliente`.`cidade`,
     `cliente`.`estado`
 FROM `lifebf`.`cliente`;
-
-
