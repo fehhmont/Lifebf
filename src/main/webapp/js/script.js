@@ -1,7 +1,6 @@
 // Menu mobile toggle
 document.addEventListener('DOMContentLoaded', function() {
-    // Adicionar funcionalidade de menu mobile no futuro
-    console.log('Site LifeBF carregado com sucesso!');
+    getPlanos();
 });
 
 // Smooth scroll para links internos
@@ -56,3 +55,11 @@ document.getElementById("loginButton").addEventListener("click", function() {
 document.getElementById("comeceButton").addEventListener("click", function() {
     window.location.href = "../cadastro.html";
 });
+async function getPlanos(){
+    console.log('teste');
+    const url = "http://localhost:8080/planos";
+    await fetch(url)
+    .then((res) => res.json())
+    .then((resp) => console.log(resp))
+    .catch((err) => console.log(err))
+}

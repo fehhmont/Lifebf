@@ -2,6 +2,7 @@ package br.com.lifebf.servlet;
 
 import br.com.lifebf.dao.PlanoDao;
 import br.com.lifebf.model.Plano;
+import com.google.gson.Gson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,6 +27,12 @@ public class PlanoServlet extends HttpServlet {
             System.out.println("DEBUG => " + plano.getNomePlano());
 
         }
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
+        Gson gson = new Gson();
+        String planosJson = gson.toJson(lsPlanos);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/painel/planos.jsp");
         dispatcher.forward(req, resp);
     }
