@@ -148,7 +148,7 @@
 <script>
 function mostrarQRCodeModal(idMembro) {
     const qr = document.getElementById("qrcode");
-    const url = "http://localhost:8080/hospitalMaisProximo.html?id_membro=" + idMembro;
+     const url = "https://lifebf-production.up.railway.app/hospitalMaisProximo.html?id_membro=" + idMembro;
 
     qr.innerHTML = "";
     new QRCode(qr, {
@@ -174,7 +174,7 @@ function fecharQRCodeModal() {
 async function adicionarHospital(idPlano){
 
     const formData = new FormData();
-    const url = "http://localhost:8080/hospital";
+    const url = "https://lifebf-production.up.railway.app/hospital";
      formData.append("nome", document.querySelector("input[name='nome_hospital']").value);
     formData.append("cep", document.querySelector("input[name='cep']").value);
     formData.append("rua", document.querySelector("input[name='rua']").value);
@@ -230,7 +230,7 @@ async function getAddress(){
 }
 async function getHospitais(id){
     sessionStorage.setItem('id_membro', id);
-    const url = "http://localhost:8080/membro/hospital?id_membro=" + id;
+    const url = "https://lifebf-production.up.railway.app/membro/hospital?id_membro=" + id;
     const containerHospitalList = document.querySelector('.hospital-list');
     containerHospitalList.innerHTML = "";
     let data = [];
@@ -264,7 +264,7 @@ function closeModal() {
     document.getElementById('modalOverlay').style.display = 'none';
 }
 function deleteHospital(id_hospital){
-    const url = "http://localhost:8080/membro/hospital?id_hospital=" + id_hospital;
+    const url = "https://lifebf-production.up.railway.app/membro/hospital?id_hospital=" + id_hospital;
     fetch(url, {
         method: 'DELETE',
         headers: {
