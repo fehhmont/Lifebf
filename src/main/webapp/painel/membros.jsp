@@ -108,14 +108,16 @@
                         <input type="text" name="estado" placeholder="Estado" required>
                          <input type="text" name="bairro" placeholder="Bairro" required>
                          <input type="text" name="numero" placeholder="Numero" required>
+                         <div style="text-align: right;">
+                                                 <button type="button" class="submit-btn" onclick="adicionarHospital('<%=cliente.getId_plano()%>')">Adicionar hospital</button>
+                                                 <button type="button" class="close-btn" onclick="closeEditModal()">Cancelar</button>
+                                             </div>
                             <div class="hospital-list">
+
                               <h3>Hospitais cadastrados:</h3>
 
                      </div>
-                     <div style="text-align: right;">
-                        <button type="button" class="submit-btn" onclick="adicionarHospital('<%=cliente.getId_plano()%>')">Adicionar hospital</button>
-                        <button type="button" class="close-btn" onclick="closeEditModal()">Cancelar</button>
-                    </div>
+
                     </form>
                 </div>
             </div>
