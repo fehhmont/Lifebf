@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -37,40 +39,33 @@
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv3peSIV5P7FHAGpKkWRSv1iThQWwe2kkhQw&s" alt="Imagem decorativa"/>
     </div>
 
+
+
     <div class="card-container">
-      <div class="card">
-        <div>
-          <h3>Free</h3>
-          <p>R$ 0 <span>/mês</span></p>
+      <c:forEach var="plano" items="${planos}">
+        <div class="card">
+          <h3>${plano.nomePlano}</h3>
+          <br>
           <ul>
-            <li><i class="fas fa-check"></i>2 membros</li>
-            <li><i class="fas fa-check"></i>5 endereços por membro</li>
+            <li><i class="fas fa-check"></i>${plano.quantidadeMembros} Criação de Membros</li>
+            <li><i class="fas fa-check"></i>${plano.quantidadeEndereco} endereços por membro</li>
           </ul>
+          <br>
+          <p>Preço: R$ ${plano.precoPlano}<span>/mês</span></p>
+          <br>
+          <c:choose>
+            <c:when test="${plano.id_plano == cliente.getId_plano()}">
+              <button class="btn-cinza" disabled>Selecionado</button>
+            </c:when>
+            <c:otherwise>
+              <form action="/alterarPlano" method="post">
+                <input type="hidden" name="idPlano" value="${plano.id_plano}" />
+                <button type="submit" class="btn-azul">Selecionar</button>
+              </form>
+            </c:otherwise>
+          </c:choose>
         </div>
-        <button>Selecionar</button>
-      </div>
-      <div class="card">
-        <div>
-          <h3>Individual</h3>
-          <p>R$ 7,50 <span>/mês</span></p>
-          <ul>
-            <li><i class="fas fa-check"></i>4 membros</li>
-            <li><i class="fas fa-check"></i>10 endereços por membro</li>
-          </ul>
-        </div>
-        <button>Selecionar</button>
-      </div>
-      <div class="card card-blue">
-        <div>
-          <h3>Plano Família</h3>
-          <p>R$ 15,90 <span>/mês</span></p>
-          <ul>
-            <li><i class="fas fa-check"></i>Membros Ilimitados</li>
-            <li><i class="fas fa-check"></i>Endereços Ilimitados por membro</li>
-          </ul>
-        </div>
-        <button>Selecionar</button>
-      </div>
+      </c:forEach>
     </div>
   </main>
 
